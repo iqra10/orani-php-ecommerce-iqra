@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2021 at 12:34 PM
+-- Generation Time: Dec 14, 2021 at 12:51 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -113,19 +113,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `randSalt`) VALUES
-(0, 'John', 'john@gmail.com', 'Doe', '$2y$10$iusesomecrazystrings22'),
-(0, '', 'edwin@gmail.com', '12345', '$2y$10$iusesomecrazystrings22'),
-(0, '', 'allen@gmail.com', 'Ren', '$2y$10$iusesomecrazystrings22'),
-(0, '', 'allen@gmail.com', 'Ren', '$2y$10$iusesomecrazystrings22'),
-(0, '', 'rico@gmail.com', 'vfgfgh', '$2y$10$iusesomecrazystrings22'),
-(0, '', 'rico@gmail.com', '$2y$10$iusesomecrazystrings2ufhPc.Ra/sw/NfWposSamJV6R/JXhN3W', '$2y$10$iusesomecrazystrings22'),
-(0, '', 'mary@gmail.com', '$2y$10$iusesomecrazystrings2uM2u2a55u8piE0Te2MzJ0q6mMDPouFgi', '$2y$10$iusesomecrazystrings22');
-
---
 -- Indexes for dumped tables
 --
 
@@ -145,6 +132,12 @@ ALTER TABLE `departments`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -168,6 +161,12 @@ ALTER TABLE `departments`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
