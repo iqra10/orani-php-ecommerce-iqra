@@ -1,4 +1,15 @@
 <?php include './../includes/db.php' ?>
+<?php session_start(); ?>
+<?php 
+                    
+  if(!isset($_SESSION['email']) && isset($_SESSION['password'])){ 
+      
+  header('Location: /orani-php-ecommerce-iqra/index.php');  
+      
+  }
+      
+  ?>   
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +45,9 @@
   </head>
 
   <body>
-  <body>
+      
+
+      
 	  <div class="fixed-button">
 		<a href="https://codedthemes.com/item/gradient-able-admin-template" target="_blank" class="btn btn-md btn-primary">
 			<i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro

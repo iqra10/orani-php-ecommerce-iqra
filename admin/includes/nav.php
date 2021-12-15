@@ -89,14 +89,14 @@
                </li>
 
                <li class="user-profile header-notification">
-                   <a href="#!">
+                   <a href="#">
                        <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
                        <span>John Doe</span>
                        <i class="ti-angle-down"></i>
                    </a>
                    <ul class="show-notification profile-notification">
                        <li>
-                           <a href="#!">
+                           <a href="#">
                                <i class="ti-settings"></i> Settings
                            </a>
                        </li>
@@ -112,7 +112,7 @@
 </a>
 </li>
 <li>
-<a href="auth-normal-sign-in.html">
+<a href="logout.php">
 <i class="ti-layout-sidebar-left"></i> Logout
 </a>
 </li>
@@ -131,93 +131,102 @@
 <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
 <ul class="pcoded-item pcoded-left-item">
 <li class="active">
-<a href="index.html">
+<a href="index.php">
 <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
 <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
 <span class="pcoded-mcaret"></span>
 </a>
 </li>
-<li class="pcoded-hasmenu">
+    
+    
+ <li class="pcoded-hasmenu">
 <a href="javascript:void(0)">
 <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-<span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Components</span>
+<span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Departments</span>
 <span class="pcoded-mcaret"></span>
 </a>
 <ul class="pcoded-submenu">
 <li class=" ">
-<a href="accordion.html">
+<a href="view_all_departments.php">
 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Accordion</span>
+<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">View All Departments</span>
 <span class="pcoded-mcaret"></span>
 </a>
 </li>
+     </ul>
+     <ul class="pcoded-submenu">
 <li class=" ">
-<a href="breadcrumb.html">
+<a href="add_user.php">
 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Breadcrumbs</span>
+<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Add Department</span>
 <span class="pcoded-mcaret"></span>
 </a>
 </li>
+    </ul>  
+     
+    </li>
+     
+     
+<li class="pcoded-hasmenu">
+<a href="javascript:void(0)">
+<span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+<span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Products</span>
+<span class="pcoded-mcaret"></span>
+</a>
+<ul class="pcoded-submenu">
 <li class=" ">
-<a href="button.html">
+<a href="view_all_products.php">
 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Button</span>
+<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">View All Products</span>
 <span class="pcoded-mcaret"></span>
 </a>
 </li>
+    </ul>
+    
+    <ul class="pcoded-submenu">
 <li class=" ">
-<a href="tabs.html">
+<a href="add_product.php">
 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Tabs</span>
+<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Add Product</span>
 <span class="pcoded-mcaret"></span>
 </a>
 </li>
+    </ul>  
+    
+    </li>
+    
+    
+<li class="pcoded-hasmenu">
+<a href="javascript:void(0)">
+<span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+<span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Users</span>
+<span class="pcoded-mcaret"></span>
+</a>
+<ul class="pcoded-submenu">
 <li class=" ">
-<a href="color.html">
+<a href="view_all_users.php">
 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Color</span>
+<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">View All Users</span>
 <span class="pcoded-mcaret"></span>
 </a>
 </li>
+    </ul>
+    
+<ul class="pcoded-submenu">
 <li class=" ">
-<a href="label-badge.html">
+<a href="view_all_users.php">
 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Label Badge</span>
+<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Add User</span>
 <span class="pcoded-mcaret"></span>
 </a>
 </li>
-<li class=" ">
-<a href="tooltip.html">
-<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Tooltip</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-<li class=" ">
-<a href="typography.html">
-<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Typography</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-<li class=" ">
-<a href="notification.html">
-<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Notification</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-<li class=" ">
-<a href="icon-themify.html">
-<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Themify</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-
-</ul>
-</li>
-</ul>
+    </ul>    
+    
+    </li>    
+    
+     
+     
+<!--
 <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Forms &amp; Tables</div>
 <ul class="pcoded-item pcoded-left-item">
 <li>
@@ -236,8 +245,11 @@
 </li>
 
 </ul>
+-->
 
+<!--
 <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Chart &amp; Maps</div>
+
 <ul class="pcoded-item pcoded-left-item">
 <li>
 <a href="chart.html">
@@ -285,7 +297,9 @@
 </li>
 
 </ul>
+-->
 
+<!--
 <div class="pcoded-navigatio-lavel" data-i18n="nav.category.other">Other</div>
 <ul class="pcoded-item pcoded-left-item">
 <li class="pcoded-hasmenu ">
@@ -325,6 +339,7 @@
 <span class="pcoded-mcaret"></span>
 </a>
 </li>
+-->
 
 </ul>
 </li>

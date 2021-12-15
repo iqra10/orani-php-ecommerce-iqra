@@ -157,10 +157,27 @@ echo "<p>$description</p>";
 
 <?php 
   
+  $query = "SELECT * FROM products ";
+
+  $result = mysqli_query($connection, $query);
+
+  while($row = mysqli_fetch_array($result)) {
+      
+    $id = $row['id'];
+    $title = $row['title'];
+    $img = $row['img'];
+    $cat_title = $row['cat_title'];
+    $tag = $row['tag'];
+    $price = $row['price'];    
+    $description = $row['description'];                               
                                 
-                                
-                                
-                                
+  printf(' 
+  
+  
+  ',
+        
+    );                              
+  }
                                 
 ?>                                
                                 
@@ -256,13 +273,61 @@ echo "<p>$description</p>";
                 </div>
             </div>
             <div class="row">
+<!--
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
+-->
+ 
+   
+   <?php 
+                
+if( isset($_GET['cat'])) {              
+  
+    $the_cat = $_GET['cat'];
+    
+  $query = "SELECT * FROM products WHERE cat_title = '{$the_cat}' LIMIT 1, 4";
+
+  $result = mysqli_query($connection, $query);
+
+  while($row = mysqli_fetch_array($result)) {
+      
+    $id = $row['id'];
+    $title = $row['title'];
+    $img = $row['img'];
+    $cat_title = $row['cat_title'];
+    $tag = $row['tag'];
+    $price = $row['price'];    
+    $description = $row['description'];                               
+                                
+  printf(' <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">   <div class="product__item__pic set-bg" data-setbg="img/%s">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="shop-details.php?id=%s&cat=%s"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">%s</a></h6>
+                            <h5>%s</h5>
+                        </div>
+                    </div>
+                </div>',
+        $img,
+        $id,
+        $cat_title,
+        $title,
+        $price
+         
+        
+    );                              
+       
+  }
+  }
+?>  
                         
- <?php 
-                        
-                        
-?>                                              
+<!--
+                                             
                         <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -321,6 +386,7 @@ echo "<p>$description</p>";
                         </div>
                     </div>
                 </div>
+-->
             </div>
         </div>
     </section>

@@ -17,27 +17,74 @@
 <div class="col-md-6 col-xl-3">
 <div class="card bg-c-blue order-card">
 <div class="card-block">
-<h6 class="m-b-20">Orders Received</h6>
-<h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>486</span></h2>
-<p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+  
+<?php    
+    
+$query = "SELECT * FROM departments" ;
+
+$select_query = mysqli_query($connection, $query);
+
+$count = mysqli_num_rows($select_query);
+
+printf( ' <h6 class="m-b-20">Departments</h6>
+<h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>%s</span></h2>',
+      
+    $count  
+      );
+
+    
+?>
+
+    
+
 </div>
 </div>
 </div>
 <div class="col-md-6 col-xl-3">
 <div class="card bg-c-green order-card">
 <div class="card-block">
-<h6 class="m-b-20">Total Sales</h6>
-<h2 class="text-right"><i class="ti-tag f-left"></i><span>1641</span></h2>
-<p class="m-b-0">This Month<span class="f-right">213</span></p>
+    
+<?php    
+    
+$query = "SELECT * FROM products" ;
+
+$select_query = mysqli_query($connection, $query);
+
+$count = mysqli_num_rows($select_query);
+
+printf( ' <h6 class="m-b-20">Products</h6>
+<h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>%s</span></h2>',
+      
+    $count  
+      );
+
+    
+?>
+    
+    
+
 </div>
 </div>
 </div>
 <div class="col-md-6 col-xl-3">
 <div class="card bg-c-yellow order-card">
 <div class="card-block">
-<h6 class="m-b-20">Revenue</h6>
-<h2 class="text-right"><i class="ti-reload f-left"></i><span>$42,562</span></h2>
-<p class="m-b-0">This Month<span class="f-right">$5,032</span></p>
+<?php    
+    
+$query = "SELECT * FROM users" ;
+
+$select_query = mysqli_query($connection, $query);
+
+$count = mysqli_num_rows($select_query);
+
+printf( ' <h6 class="m-b-20">Users</h6>
+<h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>%s</span></h2>',
+      
+    $count  
+      );
+
+    
+?>
 </div>
 </div>
 </div>
@@ -123,6 +170,25 @@
 
 <div class="table-responsive">
 <table class="table">
+    
+<?php 
+    
+  $query = "SELECT * FROM products LIMIT 1, 9" ;
+
+$result = mysqli_query($connection, $query);
+                                    
+while($row = mysqli_fetch_array($result)) {
+    
+    $id = $row['id'];
+    $title = $row['title'];
+    $img = $row['img'];
+    $cat_title = $row['cat_title'];
+    $tag = $row['tag'];
+    $price = $row['price'];  
+    
+}
+?>    
+    
 <tr>
 <th>Image</th>
 <th>Product Code</th>
@@ -150,7 +216,7 @@
 <tr>
 <td><img src="assets/images/product/prod4.jpg" alt="prod img" class="img-fluid"></td>
 <td>PNG002156</td>
-<td>Jacqueline Howell</td>
+h<td>Jacqueline Howell</td>
 <td>03-01-2017</td>
 <td><span class="label label-warning">Pending</span></td>
 <td>#7234454</td>

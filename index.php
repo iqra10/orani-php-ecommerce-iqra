@@ -78,7 +78,7 @@
                             <span>FRUIT FRESH</span>
                             <h2>Vegetable <br />100% Organic</h2>
                             <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
+                            <a href="shop.php" class="primary-btn">SHOP NOW</a>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@ while($row = mysqli_fetch_array($select_all_query)) {
     $img = $row['img'];
     
   echo "<div class='col-lg-3'>";
-  echo "<div class='categories__item set-bg' data-setbg='img/$img'>";
+  echo "<div class='categories__item set-bg' data-setbg='img/categories/$img'>";
   echo "<h5><a href='shop-grid.php?p_name={$title}'>$title</a></h5>";
    echo "</div>";
    echo "</div>";
@@ -135,11 +135,35 @@ while($row = mysqli_fetch_array($select_all_query)) {
                     </div>
                     <div class="featured__controls">
                         <ul>
-                            <li class="active" data-filter="*">All</li>
+ <?php
+// 
+//$query = "SELECT * FORM products ";
+//                            
+//$select_query = mysqli_query($connection, $query);
+//                            
+//while ($row = mysqli_fetch_array($select_query)) {
+//    
+//    $id = $row['id'];
+//    $title = $row['title'];
+//    $img = $row['img'];
+//    $cat_title = $row['cat_title'];
+//    $tag = $row['tag'];
+//    $price = $row['price'];
+//    
+//    } 
+    
+                           
+                            
+                            
+?>                            
+                            
+                            <li class="active"  data-filter="*">All</li>
                             <li data-filter=".oranges">Oranges</li>
                             <li data-filter=".fresh-meat">Fresh Meat</li>
                             <li data-filter=".vegetables">Vegetables</li>
                             <li data-filter=".fastfood">Fastfood</li>
+                            
+                            
                         </ul>
                     </div>
                 </div>
@@ -299,6 +323,54 @@ while($row = mysqli_fetch_array($select_all_query)) {
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
+                                    
+<?php
+  
+$query = "SELECT * FROM products LIMIT 1, 3" ;
+                                    
+$query .= "ORDER BY id DESC";                                    
+                                    
+$select_query = mysqli_query($connection, $query);
+                                
+while( $row = mysqli_query($connection, $query)) {
+    
+    $id = $row['id'];
+    $title = $row['title'];
+    $img = $row['img'];
+    $cat_title = $row['cat_title'];
+    $tag = $row['tag'];
+    $price = $row['price'];
+   
+//printf( ' <div class="col-lg-4 col-md-6">
+//                    <div class="latest-product__text">
+//                        <h4>Latest Products</h4>
+//                        <div class="latest-product__slider owl-carousel">
+//                            <div class="latest-prdouct__slider__item">
+//                                <a href="#" class="latest-product__item">
+//                    <div class="latest-product__item__pic">
+//                        <img src="img/%s" alt="">
+//                    </div>
+//                    <div class="latest-product__item__text">
+//                        <h6>%s</h6>
+//                        <span>%s</span>
+//                    </div>
+//                </a></div></div>', 
+//
+//     $img,
+//     $title,
+//     $price
+//      
+//      
+//      );    
+//    
+}                                
+                    
+
+                                    
+                                    
+                                    
+?>                                
+                                    
                                     <div class="latest-product__item__pic">
                                         <img src="img/latest-product/lp-1.jpg" alt="">
                                     </div>
@@ -356,8 +428,8 @@ while($row = mysqli_fetch_array($select_all_query)) {
                                 </a>
                             </div>
                         </div>
+                        </div>
                     </div>
-                </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
                         <h4>Top Rated Products</h4>

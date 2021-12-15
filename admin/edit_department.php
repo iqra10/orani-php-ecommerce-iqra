@@ -15,42 +15,39 @@
                                                 <div class="card-block">
                                                     <h4>Add Department</h4>
                                                     
-<?php
-    
- if (isset($_POST['add'])) {
-     
-        $title = $_POST['title'];
-        $img = $_FILES['img']['name'];
-        $img_temp = $_FILES['img']['tmp_name'];
-		
-	move_uploaded_file($img_temp, "./../img/categories/$img"); 
-     
-$query = "INSERT INTO departments(title, img)" ;
-     
-$query .= "VALUES('{$title}', '{$img}')";  
-     
-$add_query = mysqli_query($connection, $query);     
-     
-    echo "<p style='color: #0A77F4; font-size: 16px; padding-top: 10px;'>Department Added.</p>";
-
-     
- } 
-                                                    
-?>                                                
+                                              
                                                     <form method="post" enctype="multipart/form-data">
                                                         <div class="form-group row">
+                                                            
                                                             <label class="col-sm-2 col-form-label">Department Name</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" name="title" class="form-control">
+                                                            
+        <?php
+    
+if (isset($_GET['edit'])) {
+    
+    
+  echo  $the_id = $_GET['edit'];
+    
+
+    
+            
+}
+     
+
+
+                                                    
+?>                                                      
+                                                            <input type="text" name="title" class="form-control">
                                                             </div>
                                                         </div>
-                                                          <div class="form-group row">
+                                                              <div class="form-group row">
                                                                                 <label class="col-sm-2 col-form-label">Upload File</label>
                                                                                 <div class="col-sm-10">
                                                                                    
                                                                         <input type="file" name="img" class="form-control">
                                                                                 </div>     
-                                                                                </div>   
+                                                                                </div>
                                                                 
                                                                        <button type="submit" class="btn btn-primary" name="add" id="primary-popover-content" data-container="body" data-toggle="popover" title="Primary color states" data-placement="bottom" data-content="<div class='color-code'>
                                                                         <div class='row'>

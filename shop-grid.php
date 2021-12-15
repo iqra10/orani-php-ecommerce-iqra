@@ -467,7 +467,7 @@ printf( '<div class="breadcrumb__text">
 															</ul>
 														</div>
 														<div class="product__item__text">
-															<h6><a href="shop-details.php">%s</a></h6>
+															<h6><a href="">%s</a></h6>
 															<h5>%s</h5>
 														</div>
 													</div>

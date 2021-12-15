@@ -49,26 +49,35 @@
                     <div class="login-card card-block auth-body mr-auto ml-auto">
                         
   <?php                       
-                        
-if(isset($_POST['login'])) {
- 
-$email = $_POST['email'];
-    
-$password = $_POST['password'];
 
-$email = mysqli_real_escape_string($connection, $email);
+if(isset($_POST['login'])) {  
+  
+ $email = $_POST['email'];
+ $password = $_POST['password'];
+    
+$query = "SELECT * FROM users ";
 
-$paswword = mysqli_real_escape_string($connection, $password);   
+$select_all_query = mysqli_query($connection, $query);
+
+while($row = mysqli_fetch_array($select_all_query)) {
     
-$crypt_password = crypt($password, 'iusesomecrazystrings22');
     
+    $db_email = $row['email'];
+    $db_password = $row['password'];
+}
+
+if($db_email === $email && $db_password === $password) {
     
+   $_SESSION['email'] = $db_email;  
+   $_SESSION['password'] = $db_password;  
+
+  header('Location: index.php');
     
-$query = "INSERT INTO users(email, password)" ;
-$query .= "VALUES('{$email}', '{$crypt_password}')" ;
+} else {
     
-$add_query = mysqli_query($connection, $query);
+//    header('Location: sign-in.php');
     
+}
     
 }
     ?>

@@ -13,25 +13,36 @@
                                                 <div class="card">
 
                                                 <div class="card-block">
-                                                    <h4>Add Department</h4>
+                                                    <h4>Add User</h4>
                                                     
 <?php
     
- if (isset($_POST['add'])) {
+ if(isset($_POST['add_user'])) {
      
-        $title = $_POST['title'];
-        $img = $_FILES['img']['name'];
-        $img_temp = $_FILES['img']['tmp_name'];
-		
-	move_uploaded_file($img_temp, "./../img/categories/$img"); 
+      $username = $_POST['username'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
      
-$query = "INSERT INTO departments(title, img)" ;
+
+$username = mysqli_real_escape_string($connection, $username);
+    
+$email = mysqli_real_escape_string($connection, $email);
+
+$paswword = mysqli_real_escape_string($connection, $password);   
+    
+$crypt_password = crypt($password, 'iusesomecrazystrings22');  
      
-$query .= "VALUES('{$title}', '{$img}')";  
      
-$add_query = mysqli_query($connection, $query);     
      
-    echo "<p style='color: #0A77F4; font-size: 16px; padding-top: 10px;'>Department Added.</p>";
+     
+$query = "INSERT INTO users(username, email, password)" ;
+
+$query .= "VALUES('{$username}', '{$email}', '{$crypt_password}')" ;
+     
+$add_query = mysqli_query($connection, $query);
+     
+    echo "<p style='color: #0A77F4; font-size: 16px; padding-top: 10px;'>User Added.</p>";
+
 
      
  } 
@@ -39,20 +50,28 @@ $add_query = mysqli_query($connection, $query);
 ?>                                                
                                                     <form method="post" enctype="multipart/form-data">
                                                         <div class="form-group row">
-                                                            <label class="col-sm-2 col-form-label">Department Name</label>
+                                                            <label class="col-sm-2 col-form-label">Username</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" name="title" class="form-control">
+                                                                <input type="text" name="username" class="form-control">
                                                             </div>
                                                         </div>
-                                                          <div class="form-group row">
-                                                                                <label class="col-sm-2 col-form-label">Upload File</label>
-                                                                                <div class="col-sm-10">
-                                                                                   
-                                                                        <input type="file" name="img" class="form-control">
-                                                                                </div>     
-                                                                                </div>   
-                                                                
-                                                                       <button type="submit" class="btn btn-primary" name="add" id="primary-popover-content" data-container="body" data-toggle="popover" title="Primary color states" data-placement="bottom" data-content="<div class='color-code'>
+                                                        
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Email</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="email" name="email" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        
+                                                           <div class="form-group row">
+                                                                    <label class="col-sm-2 col-form-label">Password</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input type="password" name="password" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                         
+                                                                       <button type="submit" class="btn btn-primary" name="add_user" id="primary-popover-content" data-container="body" data-toggle="popover" title="Primary color states" data-placement="bottom" data-content="<div class='color-code'>
                                                                         <div class='row'>
                                                                           <div class='col-sm-6 col-xs-12'>
                                                                             <span class='block'>Normal</span>
@@ -108,7 +127,7 @@ $add_query = mysqli_query($connection, $query);
                                                       </div>
                                                   </div>
 
-                                                  ">Primary button</button>
+                                                  ">Add User</button>
                                                                 
                                                                    
       
