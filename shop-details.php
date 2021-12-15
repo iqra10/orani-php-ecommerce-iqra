@@ -18,30 +18,38 @@
         
         $the_id = $_GET['id'];
         
-    }
+
 
 $query = "SELECT * FROM products WHERE id = '{$the_id}' ";
 
   $result = mysqli_query($connection, $query);
 
-  while($row = mysqli_fetch_array($result)) {
-      
+  $row = mysqli_fetch_array($result);
+    
     $id = $row['id'];
     $title = $row['title'];
     $img = $row['img'];
     $cat_title = $row['cat_title'];
     $tag = $row['tag'];
     $price = $row['price'];    
-    $description = $row['description'];    
+    $description = $row['description'];   
+        
 
-echo "<h2>$title</h2>";
-echo "<div class='breadcrumb__option'>";
-echo "<a href='./index.php'>Home</a>";
-echo "<a href='./index.php'>Vegetables</a>";
-echo "<span>$title</span>";
-echo "</div>";
+printf(' <h2>%s</h2>
+            <div class="breadcrumb__option">
+            <a href="index.php">Home</a>
+            <a href="shop-grid.php?p_name=%s">%s</a>
+            <span>%s</span>
+            </div>' , 
+      $title,
+      $cat_title,
+      $cat_title,
+      $title
+      
+      
+      );     
 
-}
+    }
 
 ?>
                         
@@ -63,6 +71,10 @@ echo "</div>";
                             
 <?php
   
+        if(isset($_GET['id'])) {
+        
+        $the_id = $_GET['id'];                        
+                            
   $query = "SELECT * FROM products WHERE id = '{$the_id}' ";
 
   $result = mysqli_query($connection, $query);
@@ -78,7 +90,7 @@ echo "</div>";
     $description = $row['description'];    
 
  echo "<img class='product__details__pic__item--large'
-src='img/product/$img' alt=''>";
+src='img/$img' alt=''>";
 echo "</div>";   
 echo "<div class='product__details__pic__slider owl-carousel'>";
 echo "<img data-imgbigurl='img/product/details/product-details-2.jpg'
@@ -108,6 +120,7 @@ echo "<p>$description</p>";
       
   }
     
+        }
     
     
 ?>

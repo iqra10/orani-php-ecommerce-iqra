@@ -108,7 +108,7 @@ while($row = mysqli_fetch_array($select_all_query)) {
     $img = $row['img'];
     
   echo "<div class='col-lg-3'>";
-  echo "<div class='categories__item set-bg' data-setbg='img/categories/$img'>";
+  echo "<div class='categories__item set-bg' data-setbg='img/$img'>";
   echo "<h5><a href='shop-grid.php?p_name={$title}'>$title</a></h5>";
    echo "</div>";
    echo "</div>";

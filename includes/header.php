@@ -121,7 +121,7 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="/cms_ecommerce/ogani-master/admin/sign-in.php"><i class="fa fa-user"></i> Login</a>
+                                <a href="/orani-php-ecommerce-iqra/admin/sign-in.php"><i class="fa fa-user"></i> Login</a>
                             </div>
 <!--                                                            <a href="/cms_ecommerce/ogani-master/admin/sign-in.php"><i class="fa fa-user"></i> Login</a>-->
 

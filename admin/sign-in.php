@@ -58,14 +58,11 @@ $password = $_POST['password'];
 
 $email = mysqli_real_escape_string($connection, $email);
 
-$paswword = mysqli_real_escape_string($connection, $password);
+$paswword = mysqli_real_escape_string($connection, $password);   
     
-$query = "SELECT randSalt FROM users" ;
-$result = mysqli_query($connection, $query);
-$row = mysqli_fetch_array($result);
-$randSalt = $row['randSalt'];
+$crypt_password = crypt($password, 'iusesomecrazystrings22');
     
-$crypt_password = crypt($password, $randSalt);
+    
     
 $query = "INSERT INTO users(email, password)" ;
 $query .= "VALUES('{$email}', '{$crypt_password}')" ;

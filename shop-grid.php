@@ -14,17 +14,26 @@
                         <span>All departments</span>
                     </div>
                     <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
+ <?php 
+                        
+  $query = "SELECT * FROM departments" ;
+                        
+  $select_all_query = mysqli_query($connection, $query);
+                        
+  while ($row = mysqli_fetch_array($select_all_query)) {
+      
+      $id = $row['id'];
+      $title = $row['title'];
+      
+   echo "<li><a href='shop-grid.php?p_name={$title}'>$title</a></li>";
+  }                        
+                        
+        
+                        
+                        
+?>                            
+                                                   
+
                     </ul>
                 </div>
             </div>
@@ -61,13 +70,45 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <div class="breadcrumb__text">
-                    <h2>Organi Shop</h2>
-                    <div class="breadcrumb__option">
-                        <a href="./index.html">Home</a>
-                        <span>Shop</span>
-                    </div>
-                </div>
+<?php    
+
+
+        if ( isset( $_GET['p_name'] ) ) {
+
+            $the_name = $_GET['p_name'];
+
+           
+
+        $query = "SELECT * FROM products WHERE cat_title = '{$the_name}' ";
+
+        $result = mysqli_query( $connection, $query );
+
+        $row = mysqli_fetch_array( $result );
+
+            $cat_title = $row['cat_title'];            
+
+printf( '<div class="breadcrumb__text">                    
+             <h2>%s</h2>
+              </div>
+               <div class="breadcrumb__option">
+                 <a href="index.php">Home</a>
+                  <span>%s</span>
+           
+        </div>',
+   
+  
+       $cat_title,
+        $cat_title
+       
+       );
+   }           
+ 
+
+?>                
+                
+                
+                
+                
             </div>
         </div>
     </div>
@@ -83,16 +124,28 @@
                     <div class="sidebar__item">
                         <h4>Department</h4>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
+                            
+<?php 
+                        
+  $query = "SELECT * FROM departments" ;
+                        
+  $select_all_query = mysqli_query($connection, $query);
+                        
+  while ($row = mysqli_fetch_array($select_all_query)) {
+      
+      $id = $row['id'];
+      $title = $row['title'];
+      
+   printf( '<li><a href="shop-grid.php?p_name=%s">%s</a></li>',
+          
+    $title,
+    $title
+         );
+          
+  }                        
+                                           
+?>                            
+   
                         </ul>
                     </div>
                     <div class="sidebar__item">
@@ -255,7 +308,7 @@
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
-                                         data-setbg="img/product/discount/pd-1.jpg">
+                                         data-setbg="img/discount/pd-1.jpg">
                                         <div class="product__discount__percent">-20%</div>
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -273,7 +326,7 @@
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
-                                         data-setbg="img/product/discount/pd-2.jpg">
+                                         data-setbg="img/discount/pd-2.jpg">
                                         <div class="product__discount__percent">-20%</div>
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -291,7 +344,7 @@
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
-                                         data-setbg="img/product/discount/pd-3.jpg">
+                                         data-setbg="img/discount/pd-3.jpg">
                                         <div class="product__discount__percent">-20%</div>
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -309,7 +362,7 @@
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
-                                         data-setbg="img/product/discount/pd-4.jpg">
+                                         data-setbg="img/discount/pd-4.jpg">
                                         <div class="product__discount__percent">-20%</div>
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -327,7 +380,7 @@
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
-                                         data-setbg="img/product/discount/pd-5.jpg">
+                                         data-setbg="img/discount/pd-5.jpg">
                                         <div class="product__discount__percent">-20%</div>
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -345,7 +398,7 @@
                             <div class="col-lg-4">
                                 <div class="product__discount__item">
                                     <div class="product__discount__item__pic set-bg"
-                                         data-setbg="img/product/discount/pd-6.jpg">
+                                         data-setbg="img/discount/pd-6.jpg">
                                         <div class="product__discount__percent">-20%</div>
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -391,12 +444,6 @@
 
 						<?php
 
-						if ( isset( $_GET['p_name'] ) ) {
-
-							$the_name = $_GET['p_name'];
-
-						}
-
 						$query = "SELECT * FROM products WHERE cat_title = '{$the_name}' ";
 
 						$result = mysqli_query( $connection, $query );
@@ -412,21 +459,22 @@
 
                             printf('<div class="col-lg-4 col-md-6 col-sm-6">
 													<div class="product__item">
-														<div class="product__item__pic set-bg" data-setbg="img/product/%s">
+														<div class="product__item__pic set-bg" data-setbg="img/%s">
 															<ul class="product__item__pic__hover">
 																<li><a href="#"><i class="fa fa-heart"></i></a></li>
 																<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-																<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+																<li><a href="shop-details.php?id=%s&cat=%s"><i class="fa fa-shopping-cart"></i></a></li>
 															</ul>
 														</div>
 														<div class="product__item__text">
-															<h6><a href="#">%s</a></h6>
+															<h6><a href="shop-details.php">%s</a></h6>
 															<h5>%s</h5>
 														</div>
 													</div>
 												</div>',
 	                            $img,
-                                //
+                                $id,
+                                $cat_title,
 	                            $title,
 	                            $price
                             );
@@ -442,8 +490,8 @@
 //							echo "<h6><a href='shop-details.php?id={$id}&cat={$cat_title}'>$title</a></h6>";
 //							echo "<h5>$price</h5>";
 //							echo "</div></div></div>";
-						}
-
+				
+}
 						?>
 
                         <!--

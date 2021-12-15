@@ -7,14 +7,14 @@
   
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/page_img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <h2>Organi Shop</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
+                            <a href="./index.php">Home</a>
                             <span>Shop</span>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                                 <div class="col-lg-4">
                                     <div class="product__discount__item">
                                         <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-1.jpg">
+                                            data-setbg="img/discount/pd-1.jpg">
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -223,7 +223,7 @@
                                 <div class="col-lg-4">
                                     <div class="product__discount__item">
                                         <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-2.jpg">
+                                            data-setbg="img/discount/pd-2.jpg">
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -241,7 +241,7 @@
                                 <div class="col-lg-4">
                                     <div class="product__discount__item">
                                         <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-3.jpg">
+                                            data-setbg="img/discount/pd-3.jpg">
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -259,7 +259,7 @@
                                 <div class="col-lg-4">
                                     <div class="product__discount__item">
                                         <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-4.jpg">
+                                            data-setbg="img/discount/pd-4.jpg">
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -277,7 +277,7 @@
                                 <div class="col-lg-4">
                                     <div class="product__discount__item">
                                         <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-5.jpg">
+                                            data-setbg="img/discount/pd-5.jpg">
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -295,7 +295,7 @@
                                 <div class="col-lg-4">
                                     <div class="product__discount__item">
                                         <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-6.jpg">
+                                            data-setbg="img/discount/pd-6.jpg">
                                             <div class="product__discount__percent">-20%</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -338,12 +338,11 @@
                         </div>
                     </div>
                     <div class="row">
-                   <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class='product__item'>
+                  
                             
   <?php 
 
-$query = "SELECT * FROM products LIMIT 1, 6 ";
+$query = "SELECT * FROM products LIMIT 1, 9" ;
 
 $result = mysqli_query($connection, $query);
                                     
@@ -356,17 +355,41 @@ while($row = mysqli_fetch_array($result)) {
     $tag = $row['tag'];
     $price = $row['price'];
  
-   echo "<div class='product__item__pic set-bg' data-setbg='img/product/$img'>";
-    echo "<ul class='product__item__pic__hover'>";
-    echo "<li><a href='#'><i class='fa fa-heart'></i></a></li>";
-    echo "<li><a href='shop-details.php?id={$id}&cat={$cat_title}'><i class='fa fa-retweet'></i></a></li>";
-    echo "<li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>";
-echo "</ul>";
-echo "</div>";
-echo "<div class='product__item__text'>";
-echo "<h6><a href='shop-details.php?id={$id}&cat={$cat_title}'>$title</a></h6>";
-echo "<h5>$price</h5>";
-echo "</div>";
+ printf('<div class="col-lg-4 col-md-6 col-sm-6">
+													<div class="product__item">
+														<div class="product__item__pic set-bg" data-setbg="img/%s">
+															<ul class="product__item__pic__hover">
+																<li><a href="#"><i class="fa fa-heart"></i></a></li>
+																<li><a href="#"><i class="fa fa-retweet"></i></a></li>
+																<li><a href="shop-details.php?id=%s&cat=%s"><i class="fa fa-shopping-cart"></i></a></li>
+															</ul>
+														</div>
+														<div class="product__item__text">
+															<h6><a href="shop-details.php">%s</a></h6>
+															<h5>%s</h5>
+														</div>
+													</div>
+												</div>',
+	                            $img,
+                                $id,
+                                $cat_title,
+	                            $title,
+	                            $price
+                            );
+							    
+    
+    
+//   echo "<div class='product__item__pic set-bg' data-setbg='img/product/$img'>";
+//    echo "<ul class='product__item__pic__hover'>";
+//    echo "<li><a href='#'><i class='fa fa-heart'></i></a></li>";
+//    echo "<li><a href='shop-details.php?id={$id}&cat={$cat_title}'><i class='fa fa-retweet'></i></a></li>";
+//    echo "<li><a href='#'><i class='fa fa-shopping-cart'></i></a></li>";
+//echo "</ul>";
+//echo "</div>";
+//echo "<div class='product__item__text'>";
+//echo "<h6><a href='shop-details.php?id={$id}&cat={$cat_title}'>$title</a></h6>";
+//echo "<h5>$price</h5>";
+//echo "</div>";
 }
   
 ?>                           
@@ -552,16 +575,18 @@ echo "</div>";
                             </div>
                         </div>
 -->
-
-                        </div>
-                        </div>
-                        </div>
-                    <div class="product__pagination">
+                        
+                   <div class="product__pagination">
                         <a href="#">1</a>
                         <a href="#">2</a>
                         <a href="#">3</a>
                         <a href="#"><i class="fa fa-long-arrow-right"></i></a>
                     </div>
+
+                        </div>
+                        </div>
+                        </div>
+                 
                 </div>
             </div>
         </div>
