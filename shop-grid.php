@@ -429,7 +429,24 @@ printf( '<div class="breadcrumb__text">
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span>16</span> Products found</h6>
+                                
+<?php                                
+                                
+$query = "SELECT * FROM products WHERE cat_title = '{$the_name}' ";
+
+$result = mysqli_query( $connection, $query );
+                                
+$count = mysqli_num_rows($result);                                
+      
+printf(' <h6><span>%s</span> Products found</h6>',
+      
+      $count
+      );                                
+                                
+?>                                
+
+                                
+<!--                                <h6><span>16</span> Products found</h6>-->
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">
