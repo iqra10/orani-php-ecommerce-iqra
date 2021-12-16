@@ -47,6 +47,8 @@
         $title          = $row['title'];
         $price        = $row['price']; 
         $cat_title   = $row['cat_title'];
+        $img   = $row['cat_title'];
+
 
         
 //        

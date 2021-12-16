@@ -25,7 +25,7 @@
       $id = $row['id'];
       $title = $row['title'];
       
-   echo "<li><a href='shop-grid.php?p_name={$title}'>$title</a></li>";
+   echo "<li><a href='shop-grid.php?p_id={$id}&cat={$title}'>$title</a></li>";
   }                        
                         
         
@@ -109,7 +109,7 @@ while($row = mysqli_fetch_array($select_all_query)) {
     
   echo "<div class='col-lg-3'>";
   echo "<div class='categories__item set-bg' data-setbg='img/categories/$img'>";
-  echo "<h5><a href='shop-grid.php?p_name={$title}'>$title</a></h5>";
+  echo "<h5><a href='shop-grid.php?p_id={$id}'>$title</a></h5>";
    echo "</div>";
    echo "</div>";
                     
@@ -137,7 +137,7 @@ while($row = mysqli_fetch_array($select_all_query)) {
                         <ul>
  <?php
 // 
-//$query = "SELECT * FORM products ";
+//$query = "SELECT * FR0M departments" ;
 //                            
 //$select_query = mysqli_query($connection, $query);
 //                            
@@ -146,11 +146,18 @@ while($row = mysqli_fetch_array($select_all_query)) {
 //    $id = $row['id'];
 //    $title = $row['title'];
 //    $img = $row['img'];
-//    $cat_title = $row['cat_title'];
-//    $tag = $row['tag'];
-//    $price = $row['price'];
+//    $class = $row['class'];
 //    
-//    } 
+//printf( ' <li class="active"  data-filter="*">All</li>
+//                            <li data-filter="%s">%s</li>',
+//      
+//      $class,
+//      $title
+//      
+//      );    
+//    
+//    
+//   } 
     
                            
                             

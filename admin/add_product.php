@@ -21,7 +21,7 @@
      
         $title = $_POST['title'];
         $price = $_POST['price'];
-        $category = $_POST['category'];
+        $id_dep = $_POST['category'];
         $description = $_POST['description'];
         $info = $_POST['info'];
         $img = $_FILES['img']['name'];
@@ -29,9 +29,9 @@
 		
 	move_uploaded_file($img_temp, "./../img/$img"); 
      
-$query = "INSERT INTO products(title, price, cat_title, description, info, img)" ;
+$query = "INSERT INTO products(title, price, id_dep, description, info, img)" ;
      
-$query .= "VALUES('{$title}', '{$price}', '{$category}', '{$description}', '{$info}', '{$img}')";  
+$query .= "VALUES('{$title}', '{$price}', '{$id_dep}', '{$description}', '{$info}', '{$img}')";  
      
 $add_query = mysqli_query($connection, $query);     
      
@@ -71,14 +71,8 @@ $add_query = mysqli_query($connection, $query);
       $id = $row['id'];
       $title = $row['title'];
       
-printf( '<option value="%s">%s</option>', 
-       
-       $title,
-       $title
-       
-       );
-
-      
+echo "<option value='$title'>$title</option>";      
+ 
   }                        
                         
         

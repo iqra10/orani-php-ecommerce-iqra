@@ -19,8 +19,10 @@
       
       $id = $row['id'];
       $title = $row['title'];
+          echo $class = $row['class'];
+
       
-   echo "<li><a href='shop-grid.php?p_name={$title}'>$title</a></li>";
+   echo "<li><a href='shop-grid.php?p_id={$id}'>$title</a></li>";
   }                        
                         
         

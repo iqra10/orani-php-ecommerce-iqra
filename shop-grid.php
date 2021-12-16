@@ -73,19 +73,17 @@
 <?php    
 
 
-        if ( isset( $_GET['p_name'] ) ) {
+        if ( isset( $_GET['p_id'] ) ) {
 
-            $the_name = $_GET['p_name'];
+            $the_id = $_GET['p_id'];
+            $the_cat = $_GET['cat'];
 
            
 
-        $query = "SELECT * FROM products WHERE cat_title = '{$the_name}' ";
+        $query = "SELECT * FROM products WHERE id_dep = '{$the_id}' ";
 
         $result = mysqli_query( $connection, $query );
-
-        $row = mysqli_fetch_array( $result );
-
-            $cat_title = $row['cat_title'];            
+        
 
 printf( '<div class="breadcrumb__text">                    
              <h2>%s</h2>
@@ -97,8 +95,8 @@ printf( '<div class="breadcrumb__text">
         </div>',
    
   
-       $cat_title,
-        $cat_title
+       $the_cat,
+        $the_cat
        
        );
    }           
@@ -127,22 +125,23 @@ printf( '<div class="breadcrumb__text">
                             
 <?php 
                         
-  $query = "SELECT * FROM departments" ;
-                        
-  $select_all_query = mysqli_query($connection, $query);
-                        
-  while ($row = mysqli_fetch_array($select_all_query)) {
-      
-      $id = $row['id'];
-      $title = $row['title'];
-      
-   printf( '<li><a href="shop-grid.php?p_name=%s">%s</a></li>',
-          
-    $title,
-    $title
-         );
-          
-  }                        
+//  $query = "SELECT * FROM departments" ;
+//                        
+//  $select_all_query = mysqli_query($connection, $query);
+//                        
+//  while ($row = mysqli_fetch_array($select_all_query)) {
+//      
+//      $id = $row['id'];
+//      $title = $row['title'];
+//      
+//   printf( ' <li><a href="shop-grid.php?p_id={$id}">$title</a></li>,
+
+//          
+//    $title,
+//    $title
+//         );
+//          
+//  }                        
                                            
 ?>                            
    
@@ -432,7 +431,7 @@ printf( '<div class="breadcrumb__text">
                                 
 <?php                                
                                 
-$query = "SELECT * FROM products WHERE cat_title = '{$the_name}' ";
+$query = "SELECT * FROM products WHERE id_dep = '{$the_cat}' ";
 
 $result = mysqli_query( $connection, $query );
                                 
@@ -461,7 +460,7 @@ printf(' <h6><span>%s</span> Products found</h6>',
 
 						<?php
 
-						$query = "SELECT * FROM products WHERE cat_title = '{$the_name}' ";
+						$query = "SELECT * FROM products WHERE id_dep = '{$the_id}' ";
 
 						$result = mysqli_query( $connection, $query );
 
@@ -470,8 +469,7 @@ printf(' <h6><span>%s</span> Products found</h6>',
 							$id        = $row['id'];
 							$title     = $row['title'];
 							$img       = $row['img'];
-							$cat_title = $row['cat_title'];
-							$tag       = $row['tag'];
+							$id_dep    = $row['id_dep'];
 							$price     = $row['price'];
 
                             printf('<div class="col-lg-4 col-md-6 col-sm-6">
@@ -491,11 +489,11 @@ printf(' <h6><span>%s</span> Products found</h6>',
 												</div>',
 	                            $img,
                                 $id,
-                                $cat_title,
+                                $id_dep,
 	                            $title,
 	                            $price
                             );
-							
+//							
 //							echo "<div class='col-lg-4 col-md-6 col-sm-6'><div class='product__item'></div><div class='product__item__pic set-bg' data-setbg='img/product/$img'>";
 //							echo "<ul class='product__item__pic__hover'>";
 //							echo "<li><a href='#'><i class='fa fa-heart'></i></a></li>";
@@ -507,12 +505,17 @@ printf(' <h6><span>%s</span> Products found</h6>',
 //							echo "<h6><a href='shop-details.php?id={$id}&cat={$cat_title}'>$title</a></h6>";
 //							echo "<h5>$price</h5>";
 //							echo "</div></div></div>";
+                            
+                        }
 				
-}
+//}
 						?>
 
-                        <!--
+                        
+<!--
 													<div class="product__item">
+
+
 														<div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
 															<ul class="product__item__pic__hover">
 																<li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -641,8 +644,15 @@ printf(' <h6><span>%s</span> Products found</h6>',
 															</ul>
 														</div>
 														<div class="product__item__text">
+
+
+
+
+
 															<h6><a href="#">Crab Pool Security</a></h6>
+
 															<h5>$30.00</h5>
+
 														</div>
 													</div>
 												</div>
@@ -688,10 +698,13 @@ printf(' <h6><span>%s</span> Products found</h6>',
 														<div class="product__item__text">
 															<h6><a href="#">Crab Pool Security</a></h6>
 															<h5>$30.00</h5>
-														</div>
+
 													</div>
+-->
 												</div>
-						-->
+                														</div>
+
+						
             </div>
             <div class="product__pagination">
                 <a href="#">1</a>

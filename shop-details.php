@@ -17,6 +17,7 @@
     if(isset($_GET['id'])) {
         
         $the_id = $_GET['id'];
+        $the_cat = $_GET['cat'];
         
 
 
@@ -29,8 +30,7 @@ $query = "SELECT * FROM products WHERE id = '{$the_id}' ";
     $id = $row['id'];
     $title = $row['title'];
     $img = $row['img'];
-    $cat_title = $row['cat_title'];
-    $tag = $row['tag'];
+    $id_dep = $row['id_dep'];
     $price = $row['price'];    
     $description = $row['description'];   
         
@@ -42,8 +42,8 @@ printf(' <h2>%s</h2>
             <span>%s</span>
             </div>' , 
       $title,
-      $cat_title,
-      $cat_title,
+      $the_cat,
+      $the_cat,
       $title
       
       
@@ -84,8 +84,7 @@ printf(' <h2>%s</h2>
     $id = $row['id'];
     $title = $row['title'];
     $img = $row['img'];
-    $cat_title = $row['cat_title'];
-    $tag = $row['tag'];
+    $id_dep = $row['id_dep'];
     $price = $row['price'];    
     $description = $row['description'];    
 
@@ -166,8 +165,7 @@ echo "<p>$description</p>";
     $id = $row['id'];
     $title = $row['title'];
     $img = $row['img'];
-    $cat_title = $row['cat_title'];
-    $tag = $row['tag'];
+    $id_dep = $row['id_dep'];
     $price = $row['price'];    
     $description = $row['description'];                               
                                 
@@ -285,7 +283,7 @@ if( isset($_GET['cat'])) {
   
     $the_cat = $_GET['cat'];
     
-  $query = "SELECT * FROM products WHERE cat_title = '{$the_cat}' LIMIT 1, 4";
+  $query = "SELECT * FROM products WHERE id_dep = '{$the_cat}' LIMIT 1, 4";
 
   $result = mysqli_query($connection, $query);
 
@@ -294,8 +292,7 @@ if( isset($_GET['cat'])) {
     $id = $row['id'];
     $title = $row['title'];
     $img = $row['img'];
-    $cat_title = $row['cat_title'];
-    $tag = $row['tag'];
+    $id_dep = $row['id_dep'];
     $price = $row['price'];    
     $description = $row['description'];                               
                                 
@@ -315,7 +312,7 @@ if( isset($_GET['cat'])) {
                 </div>',
         $img,
         $id,
-        $cat_title,
+        $id_dep,
         $title,
         $price
          
