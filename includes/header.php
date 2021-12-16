@@ -1,4 +1,7 @@
-<?php include 'db.php' ?>
+<?php
+include 'db.php';
+include_once 'function.php';
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -25,11 +28,6 @@
 </head>
 
 <body>
-     <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
