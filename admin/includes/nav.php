@@ -156,7 +156,7 @@
      </ul>
      <ul class="pcoded-submenu">
 <li class=" ">
-<a href="add_user.php">
+<a href="add_department.php">
 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Add Department</span>
 <span class="pcoded-mcaret"></span>
@@ -214,7 +214,7 @@
     
 <ul class="pcoded-submenu">
 <li class=" ">
-<a href="view_all_users.php">
+<a href="add_user.php">
 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
 <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Add User</span>
 <span class="pcoded-mcaret"></span>
