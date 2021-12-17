@@ -40,3 +40,32 @@ function get_departments() {
 	return $departments;
 
 }
+
+function get_total_products_num() {
+    
+    $query = "SELECT * FROM products" ;
+    
+    global $connection;
+    
+    $result = mysqli_query( $connection, $query);
+    
+    $count = mysqli_num_rows( $result );
+    
+    return $count;
+    
+}
+
+
+function get_total_products_num_by_id($dep_id) {
+    
+    $query = "SELECT * FROM products WHERE id = '{$dep_id}' " ;
+    
+    global $connection;
+    
+    $result = mysqli_query( $connection, $query);
+    
+    $count = mysqli_num_rows( $result );
+    
+    return $count;
+    
+}

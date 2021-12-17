@@ -11,39 +11,22 @@
                         <ul>
  <?php 
                         
-  $query = "SELECT * FROM departments" ;
-                        
-  $select_all_query = mysqli_query($connection, $query);
-                        
-  while ($row = mysqli_fetch_array($select_all_query)) {
-      
-      $id = $row['id'];
-      $title = $row['title'];
-          echo $class = $row['class'];
-
-      
+$departments = get_departments();
+ 
+foreach ( $departments as $department ) {
+    
+							$id    = $department['id'];
+							$title = $department['title'];
+							$img   = $department['img'];
+                                               
+                            
    echo "<li><a href='shop-grid.php?p_id={$id}'>$title</a></li>";
-  }                        
-                        
-        
-                        
+                      
+}
+                       
                         
 ?>                            
                             
-                            
-<!--
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
--->
                         </ul>
                     </div>
                 </div>

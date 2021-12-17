@@ -29,11 +29,10 @@
 		
 	move_uploaded_file($img_temp, "./../img/$img"); 
      
-$query = "INSERT INTO products(title, price, id_dep, description, info, img)" ;
      
-$query .= "VALUES('{$title}', '{$price}', '{$id_dep}', '{$description}', '{$info}', '{$img}')";  
+    $query = "INSERT INTO products(title, img, price, description, info, dep_id)" ;
      
-$add_query = mysqli_query($connection, $query);     
+    $result = "VALUES('{$title}', '{$img}', '{$price}', '{$description}', '{$info}', '{$id_dep}') ";
      
     echo "<p style='color: #0A77F4; font-size: 16px; padding-top: 10px;'>Fruit Added.</p>";
 
@@ -71,7 +70,7 @@ $add_query = mysqli_query($connection, $query);
       $id = $row['id'];
       $title = $row['title'];
       
-echo "<option value='$title'>$title</option>";      
+echo "<option value='$id'>$title</option>";      
  
   }                        
                         
