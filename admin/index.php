@@ -171,24 +171,6 @@ printf( ' <h6 class="m-b-20">Users</h6>
 <div class="table-responsive">
 <table class="table">
     
-<?php 
-    
-  $query = "SELECT * FROM products LIMIT 1, 9" ;
-
-$result = mysqli_query($connection, $query);
-                                    
-while($row = mysqli_fetch_array($result)) {
-    
-    $id = $row['id'];
-    $title = $row['title'];
-    $img = $row['img'];
-    $cat_title = $row['cat_title'];
-    $tag = $row['tag'];
-    $price = $row['price'];  
-    
-}
-?>    
-    
 <tr>
 <th>Image</th>
 <th>Product Code</th>
