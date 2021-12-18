@@ -49,11 +49,12 @@
                 <td>%s</td>
                 <td>%s</td>
                 <td><a href="edit_department.php?id=%s">Edit</a></td>
-                <td><a href="">Delete</a></td>
+                <td><a href="view_all_departments.php?delete=%s">Delete</a></td>
 
                 </tr> ',
        $id,
        $title,
+       $id,
        $id
           
           );    
@@ -74,13 +75,15 @@
             
 <?php 
 
-//if(isset($_GET['delete'])) {
-//  
-// $the_user_id = $_GET['delete'];
-//
-//
-//}
-
+if(isset($_GET['delete'])) {
+  
+ $p_id = $_GET['delete'];
+    
+$delete_product = delete_department_by_id($p_id);
+        
+}
+                        
+                    
 
 
       

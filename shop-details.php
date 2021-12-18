@@ -26,7 +26,7 @@
         
     }
 
-$query = "SELECT * FROM products WHERE id = '{$the_id}' ";
+$query = "SELECT * FROM departments WHERE id = '{$dep_id}' ";
 
   $result = mysqli_query($connection, $query);
 
@@ -35,9 +35,9 @@ $query = "SELECT * FROM products WHERE id = '{$the_id}' ";
     $id = $row['id'];
     $title = $row['title'];
     $img = $row['img'];
-    $dep_id = $row['dep_id'];
-    $price = $row['price'];    
-    $description = $row['description'];   
+//    $dep_id = $row['dep_id'];
+//    $price = $row['price'];    
+//    $description = $row['description'];   
         
 
 printf(' <h2>%s</h2>
@@ -47,8 +47,8 @@ printf(' <h2>%s</h2>
             <span>%s</span>
             </div>' , 
       $title,
-      $dep_id,
-      $dep_id,
+      $id,
+      $title,
       $title
       
       

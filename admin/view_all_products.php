@@ -62,8 +62,8 @@
                 <td>%s</td>
                 <td>%s</td>
                 <td>%s</td>
-                <td>%s</td>
-                <td><a href="">Edit</a></td>
+                <td><img width="100" src="../img/%s" /></td>
+                <td><a href="edit_product.php?edit=%s&dep_id=%s">Edit</a></td>
                 <td><a href="view_all_products.php?delete=%s">Delete</a></td>
                 </tr>',
     
@@ -72,6 +72,8 @@
         $price,
         $dep_id,
         $img,
+        $id,
+        $dep_id,
         $id
           
           );    
@@ -91,19 +93,15 @@
                                                         
             
 <?php 
-//
-//if(isset($_GET['delete'])) {
-//  
-// $p_id = $_GET['delete'];
-//
-//global $connection;
-//    
-//$query = "DELETE FROM products WHERE id = '{$p_id}'" ;
-//                        
-//$delete_query = mysqli_query( $connection, $query );
-//}
-   
-//header("Location: view_all_products.php");
+
+if(isset($_GET['delete'])) {
+  
+ $p_id = $_GET['delete'];
+    
+$delete_product = delete_product_by_id($p_id);
+        
+}
+                        
                         
 ?>
 

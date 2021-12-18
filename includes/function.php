@@ -18,16 +18,37 @@ function sanitize_key( $key ) {
 	return $key;
 }
 
+function redirect($location) {
+    
+    
+    header("Location:" . $location);
+    
+    exit;
+    
+}
+
 
 function get_department_by_id( $dep_id ) {
     
-	global $connection;
+    
+    global $connection;
 
-	$query = "SELECT * FROM departments WHERE id='{$dep_id}' LIMIT 1";
-
-	return mysqli_fetch_array( mysqli_query( $connection, $query ) );
+	$query = "SELECT * FROM departments WHERE  id='{$dep_id}'" ;
+        
+    $result = mysqli_query( $connection, $query );
+    
+    $departments = [];
+    
+	while($department = mysqli_fetch_array($result)){ 
+        
+		$departments[] = $department;
+	}
+	return $departments;
 
 }
+
+
+
 
 function get_departments() {
 	global $connection;
@@ -132,9 +153,68 @@ function get_latest_products() {
 }
 
 
-
-
+function delete_product_by_id($id) {
     
+    global $connection;
+    
+$query = "DELETE FROM products WHERE id = '{$id}'" ;
+    
+$delete_query = mysqli_query( $connection, $query );
+    
+return $delete_query;    
+    
+    
+    
+}
+
+function delete_user_by_id($id) {
+    
+    global $connection;
+    
+$query = "DELETE FROM users WHERE id = '{$id}'" ;
+    
+$delete_query = mysqli_query( $connection, $query );
+    
+return $delete_query;    
+    
+    
+    
+}
+
+function delete_department_by_id($id) {
+    
+    global $connection;
+    
+$query = "DELETE FROM departments WHERE id = '{$id}'" ;
+    
+$delete_query = mysqli_query( $connection, $query );
+    
+return $delete_query;    
+    
+    
+    
+}
+
+function get_product_by_id($id) {
+    
+    global $connection;
+    
+    $query = "SELECT * FROM products WHERE id = '{$id}'" ;
+    
+    $result = mysqli_query( $connection, $query );
+    
+    $products = [];
+    
+    while ( $product = mysqli_fetch_array( $result )) {
+        
+        $products[] = $product;
+        
+        
+    }
+    
+    return $products;
+    
+}    
 
 
     
