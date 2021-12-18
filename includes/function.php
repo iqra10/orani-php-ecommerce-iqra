@@ -114,7 +114,7 @@ function get_latest_products() {
     
   global $connection;
 
-	$query = "SELECT * FROM products LIMIT 2 ";
+	$query = "SELECT * FROM products LIMIT 6 ";
     
 //    $query .= "ORDER BY id DESC ";
     
