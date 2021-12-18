@@ -1,14 +1,8 @@
 <?php include './../includes/db.php' ?>
+<?php include './../includes/function.php' ?>
+
 <?php session_start(); ?>
-<?php 
-                    
-  if(!isset($_SESSION['email']) && isset($_SESSION['password'])){ 
-      
-  header('Location: /orani-php-ecommerce-iqra/index.php');  
-      
-  }
-      
-  ?>   
+<?php ob_start(); ?> 
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,5 +1,5 @@
 <?php
-include_once 'db.php';
+//include_once 'db.php';
 
 function sanitize_key( $key ) {
 	$raw_key = $key;
@@ -20,6 +20,7 @@ function sanitize_key( $key ) {
 
 
 function get_department_by_id( $dep_id ) {
+    
 	global $connection;
 
 	$query = "SELECT * FROM departments WHERE id='{$dep_id}' LIMIT 1";
@@ -58,7 +59,7 @@ function get_total_products_num() {
 
 function get_total_products_num_by_id($dep_id) {
     
-    $query = "SELECT * FROM products WHERE id = '{$dep_id}' " ;
+    $query = "SELECT * FROM products WHERE dep_id = '{$dep_id}' LIMIT 3 ";
     
     global $connection;
     
@@ -69,3 +70,71 @@ function get_total_products_num_by_id($dep_id) {
     return $count;
     
 }
+
+function get_products() {
+    
+	global $connection;
+    
+	$query = "SELECT * FROM products LIMIT 6";
+
+	$select_all_query = mysqli_query( $connection, $query );
+    
+	$products = [];
+    
+	while($product = mysqli_fetch_array($select_all_query)){
+        
+		$products[] = $product;
+	}
+	return $products;
+
+}
+    
+   
+
+function get_products_by_id($dep_id) {
+    
+    global $connection;
+
+	$query = "SELECT * FROM products WHERE dep_id='{$dep_id}' LIMIT 4 ";
+        
+    $result = mysqli_query( $connection, $query );
+    
+    $products = [];
+    
+	while($product = mysqli_fetch_array($result)){ 
+        
+		$products[] = $product;
+	}
+	return $products;
+
+}
+
+
+function get_latest_products() {
+    
+  global $connection;
+
+	$query = "SELECT * FROM products LIMIT 2 ";
+    
+//    $query .= "ORDER BY id DESC ";
+    
+    $result = mysqli_query( $connection, $query );
+    
+    $latest_products = [];  
+    
+	while($product = mysqli_fetch_array($result)){
+        
+		$latest_products[] = $product;
+	}
+    
+	return $latest_products;
+
+}
+
+
+
+
+    
+
+
+    

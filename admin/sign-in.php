@@ -66,7 +66,7 @@ while($row = mysqli_fetch_array($select_all_query)) {
     $db_password = $row['password'];
 }
 
-if($db_email === $email && $db_password === $password) {
+if($db_email == $email && $db_password == $password) {
     
    $_SESSION['email'] = $db_email;  
    $_SESSION['password'] = $db_password;  
@@ -75,7 +75,7 @@ if($db_email === $email && $db_password === $password) {
     
 } else {
     
-//    header('Location: sign-in.php');
+    header('Location: sign-in.php');
     
 }
     

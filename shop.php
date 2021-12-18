@@ -385,20 +385,17 @@ printf(' <h6><span>%s</span> Products found</h6>',
 
 <?php
 
-                     
-        
-$query = "SELECT * FROM products LIMIT 1, 6" ;
                         
-$result = mysqli_query($connection, $query);
-                                    
-while($row = mysqli_fetch_array($result)) {
+$products = get_products();
+        
+foreach( $products as $product ) {                
+                        
     
-    $id = $row['id'];
-    $title = $row['title'];
-    $img = $row['img'];
-    $cat_title = $row['cat_title'];
-    $tag = $row['tag'];
-    $price = $row['price'];
+    $id = $product['id'];
+    $title = $product['title'];
+    $img = $product['img'];
+    $dep_id = $product['dep_id'];
+    $price = $product['price'];
  
  printf('<div class="col-lg-4 col-md-6 col-sm-6">
 													<div class="product__item">
@@ -406,7 +403,7 @@ while($row = mysqli_fetch_array($result)) {
 															<ul class="product__item__pic__hover">
 																<li><a href="#"><i class="fa fa-heart"></i></a></li>
 																<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-																<li><a href="shop-details.php?id=%s&cat=%s"><i class="fa fa-shopping-cart"></i></a></li>
+																<li><a href="shop-details.php?id=%s&dep_id=%s"><i class="fa fa-shopping-cart"></i></a></li>
 															</ul>
 														</div>
 														<div class="product__item__text">
@@ -417,7 +414,7 @@ while($row = mysqli_fetch_array($result)) {
 												</div>',
 	                            $img,
                                 $id,
-                                $cat_title,
+                                $dep_id,
 	                            $title,
 	                            $price
                             );

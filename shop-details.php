@@ -17,9 +17,14 @@
     if(isset($_GET['id'])) {
         
         $the_id = $_GET['id'];
-        $the_cat = $_GET['cat'];
+        $dep_id = $_GET['dep_id'];
         
-
+    } else {
+        
+         $the_id = '';
+        $dep_id = '';
+        
+    }
 
 $query = "SELECT * FROM products WHERE id = '{$the_id}' ";
 
@@ -30,7 +35,7 @@ $query = "SELECT * FROM products WHERE id = '{$the_id}' ";
     $id = $row['id'];
     $title = $row['title'];
     $img = $row['img'];
-    $id_dep = $row['id_dep'];
+    $dep_id = $row['dep_id'];
     $price = $row['price'];    
     $description = $row['description'];   
         
@@ -42,14 +47,14 @@ printf(' <h2>%s</h2>
             <span>%s</span>
             </div>' , 
       $title,
-      $the_cat,
-      $the_cat,
+      $dep_id,
+      $dep_id,
       $title
       
       
       );     
 
-    }
+
 
 ?>
                         
@@ -84,7 +89,7 @@ printf(' <h2>%s</h2>
     $id = $row['id'];
     $title = $row['title'];
     $img = $row['img'];
-    $id_dep = $row['id_dep'];
+    $dep_id = $row['dep_id'];
     $price = $row['price'];    
     $description = $row['description'];    
 
@@ -156,26 +161,26 @@ echo "<p>$description</p>";
 
 <?php 
   
-  $query = "SELECT * FROM products ";
-
-  $result = mysqli_query($connection, $query);
-
-  while($row = mysqli_fetch_array($result)) {
-      
-    $id = $row['id'];
-    $title = $row['title'];
-    $img = $row['img'];
-    $id_dep = $row['id_dep'];
-    $price = $row['price'];    
-    $description = $row['description'];                               
-                                
-  printf(' 
-  
-  
-  ',
-        
-    );                              
-  }
+//  $query = "SELECT * FROM products ";
+//
+//  $result = mysqli_query($connection, $query);
+//
+//  while($row = mysqli_fetch_array($result)) {
+//      
+//    $id = $row['id'];
+//    $title = $row['title'];
+//    $img = $row['img'];
+//    $id_dep = $row['id_dep'];
+//    $price = $row['price'];    
+//    $description = $row['description'];                               
+//                                
+//  printf(' 
+//  
+//  
+//  ',
+//        
+//    );                              
+//  }
                                 
 ?>                                
                                 
@@ -279,29 +284,27 @@ echo "<p>$description</p>";
    
    <?php 
                 
-if( isset($_GET['cat'])) {              
+if( isset($_GET['dep_id'])) {              
   
-    $the_cat = $_GET['cat'];
+    $dep_id = $_GET['dep_id'];
     
-  $query = "SELECT * FROM products WHERE id_dep = '{$the_cat}' LIMIT 1, 4";
-
-  $result = mysqli_query($connection, $query);
-
-  while($row = mysqli_fetch_array($result)) {
+  $products = get_products_by_id($dep_id);
       
-    $id = $row['id'];
-    $title = $row['title'];
-    $img = $row['img'];
-    $id_dep = $row['id_dep'];
-    $price = $row['price'];    
-    $description = $row['description'];                               
+foreach ( $products as $product) {
+    
+    $id = $product['id'];
+    $title = $product['title'];
+    $img = $product['img'];
+    $id_dep = $product['dep_id'];
+    $price = $product['price'];    
+    $description = $product['description'];                             
                                 
   printf(' <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">   <div class="product__item__pic set-bg" data-setbg="img/%s">
+                    <div class="product__item"> <div class="product__item__pic set-bg" data-setbg="img/%s">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="shop-details.php?id=%s&cat=%s"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href="shop-details.php?id=%s&dep_id=%s"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -312,7 +315,7 @@ if( isset($_GET['cat'])) {
                 </div>',
         $img,
         $id,
-        $id_dep,
+        $dep_id,
         $title,
         $price
          
