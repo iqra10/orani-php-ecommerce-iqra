@@ -16,7 +16,7 @@
                         <h2>Organi Shop</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.html">Home</a>
-                            <span>Shop</span>
+                            <span>Products</span>
                         </div>
                     </div>
                 </div>
@@ -53,19 +53,7 @@ foreach ( $departments as $department ) {
                       
 }
                                
-                        
-$product_per_page = 6;
-                        
-$query = "SELECT * FROM products" ;
-                        
-$result = mysqli_query( $connection, $query );
-                        
-$count = mysqli_num_rows( $result );
-                        
-$page_products = ceil( $count / $product_per_page );                       
-                        
-echo $page_products;                        
-                        
+ 
                         
                         
 ?>              
@@ -396,9 +384,9 @@ printf(' <h6><span>%s</span> Products found</h6>',
                         
   
     $products = get_products_by_id($dep_id);
-      
-//      var_dump($products);
-      
+//      
+////      var_dump($products);
+//      
       
 foreach ( $products as $product) {
     

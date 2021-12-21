@@ -371,11 +371,48 @@ printf(' <h6><span>%s</span> Products found</h6>',
 
 <?php
 
+ $per_page = 6;
+
+
+            if(isset($_GET['page'])) {
+
+
+            $page = $_GET['page'];
+
+            } else {
+
+
+                $page = "";
+            }
+
+
+            if($page == "" || $page == 1) {
+
+                $page_1 = 0;
+
+            } 
+                else {
+
+                $page_1 = ($page * $per_page) - $per_page;
+
+            }
+                
+
+        $count  = ceil($count /$per_page);
+
+  
+                
+                
+        $query = "SELECT * FROM products LIMIT $page_1, $per_page ";
+        $select_all_posts_query = mysqli_query($connection,$query);                        
                         
-$products = get_products();
+ 
+                      
+//$products = get_products();
         
-foreach( $products as $product ) {                
-                        
+//foreach( $products as $product ) {                
+
+while ( $product = mysqli_fetch_array($select_all_posts_query)) {                        
     
     $id = $product['id'];
     $title = $product['title'];
@@ -389,11 +426,11 @@ foreach( $products as $product ) {
 															<ul class="product__item__pic__hover">
 																<li><a href="#"><i class="fa fa-heart"></i></a></li>
 																<li><a href="#"><i class="fa fa-retweet"></i></a></li>
-																<li><a href="shop-details.php?id=%s&dep_id=%s"><i class="fa fa-shopping-cart"></i></a></li>
+																<li><a href="product_details.php?id=%s&dep_id=%s"><i class="fa fa-shopping-cart"></i></a></li>
 															</ul>
 														</div>
 														<div class="product__item__text">
-															<h6><a href="shop-details.php">%s</a></h6>
+															<h6><a href="product_details.php">%s</a></h6>
 															<h5>%s</h5>
 														</div>
 													</div>
@@ -410,22 +447,41 @@ foreach( $products as $product ) {
   
 ?>                       
                     </div>
-     
+                              <div class="product__pagination">
+
  <!--- Pagination Query --->                   
-<?php 
-                          
-$product_per_page = 6;
-                        
-$query = "SELECT * FROM products" ;
-                        
-$result = mysqli_query( $connection, $query );
-                        
-$count = mysqli_num_rows( $result );
-                        
-$page_products = ceil( $count / $product_per_page );                       
-                        
-echo $page_products;                        
-                                         
+        
+                                  
+  <?php 
+                                  
+//$pager = ($page + 1);                                  
+     
+for($i= 1; $i<= $count; $i++)  {
+    
+  if($i == $page) {
+
+             echo "<a class='active_link' href='shop.php?page={$i}'>{$i}</a>";
+  }
+
+    
+    else {
+
+            echo "<a href='shop.php?page={$i}'>$i</a>";
+
+
+
+        
+         
+
+        }   
+    
+    
+    
+    
+    
+}    
+                             
+                                                                           
      ?>               
                     
                     
@@ -434,11 +490,13 @@ echo $page_products;
                     
                     
                     
+<!--
                          <div class="product__pagination">
                         <a href="#">1</a>
                         <a href="#">2</a>
                         <a href="#">3</a>
                         <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+-->
 
                         </div>
                         </div>
