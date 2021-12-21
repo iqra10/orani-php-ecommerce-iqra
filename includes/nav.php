@@ -20,7 +20,7 @@ foreach ( $departments as $department ) {
 							$img   = $department['img'];
                                                
                             
-   echo "<li><a href='shop-grid.php?p_id={$id}'>$title</a></li>";
+   echo "<li><a href='products.php?p_id={$id}'>$title</a></li>";
                       
 }
                        

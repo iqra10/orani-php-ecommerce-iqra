@@ -1,4 +1,5 @@
 <?php include './../includes/db.php' ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,27 +48,32 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
                     <div class="login-card card-block auth-body mr-auto ml-auto">
-                        
-  <?php                       
+                                              
 
-if(isset($_POST['login'])) {  
+<?php 
+    
+if (isset ( $_POST['login'] ) ) {  
   
  $email = $_POST['email'];
  $password = $_POST['password'];
     
-$query = "SELECT * FROM users ";
-
-$select_all_query = mysqli_query($connection, $query);
-
-while($row = mysqli_fetch_array($select_all_query)) {
     
+if ( !empty( $email ) && !empty( $password ) )   {
     
-    $db_email = $row['email'];
-    $db_password = $row['password'];
-}
+$query = "SELECT * FROM users WHERE email = '{$email}'" ;
+
+$result = mysqli_query($connection, $query);
+
+while($row = mysqli_fetch_array($result)) {
+    
+    $db_username   = $row['username'];
+    $db_email      = $row['email'];
+    $db_password   = $row['password'];
+
 
 if($db_email == $email && $db_password == $password) {
     
+   echo $_SESSION['username'] = $db_username;  
    $_SESSION['email'] = $db_email;  
    $_SESSION['password'] = $db_password;  
 
@@ -77,8 +83,20 @@ if($db_email == $email && $db_password == $password) {
     
     header('Location: sign-in.php');
     
-}
+      }
     
+    
+    }
+    
+
+ } else {
+    
+    
+    
+   echo "<p style='color: #fffff; font-size: 16px; padding-top: 10px;'>Fields should not be empty.</p>";
+
+     
+    }
 }
     ?>
                         

@@ -1,4 +1,3 @@
-
 <nav class="navbar header-navbar pcoded-header">
    <div class="navbar-wrapper">
        <div class="navbar-logo">
@@ -59,7 +58,7 @@
                            <div class="media">
                                <img class="d-flex align-self-center img-radius" src="assets/images/avatar-2.jpg" alt="Generic placeholder image">
                                <div class="media-body">
-                                   <h5 class="notification-user">John Doe</h5>
+                                   <h5 class="notification-user"><?php echo $_SESSION['email'] ?></h5>
                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
                                    <span class="notification-time">30 minutes ago</span>
                                </div>
@@ -91,7 +90,7 @@
                <li class="user-profile header-notification">
                    <a href="#">
                        <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                       <span>John Doe</span>
+                       <span>John</span>
                        <i class="ti-angle-down"></i>
                    </a>
                    <ul class="show-notification profile-notification">
@@ -212,134 +211,23 @@
 </li>
     </ul>
     
-<ul class="pcoded-submenu">
-<li class=" ">
-<a href="add_user.php">
-<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Add User</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-    </ul>    
-       
-    </li>    
-    
-     
-     
-<!--
-<div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Forms &amp; Tables</div>
-<ul class="pcoded-item pcoded-left-item">
-<li>
-<a href="form-elements-component.html">
-<span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-<span class="pcoded-mtext" data-i18n="nav.form-components.main">Form Components</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-<li>
-<a href="bs-basic-table.html">
-<span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-<span class="pcoded-mtext" data-i18n="nav.form-components.main">Basic Table</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-
-</ul>
--->
-
-<!--
-<div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Chart &amp; Maps</div>
-
-<ul class="pcoded-item pcoded-left-item">
-<li>
-<a href="chart.html">
-<span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-<span class="pcoded-mtext" data-i18n="nav.form-components.main">Chart</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-<li>
-<a href="map-google.html">
-<span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-<span class="pcoded-mtext" data-i18n="nav.form-components.main">Maps</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
 <li class="pcoded-hasmenu">
 <a href="javascript:void(0)">
 <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-<span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Pages</span>
+<span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Submitted Forms</span>
 <span class="pcoded-mcaret"></span>
 </a>
 <ul class="pcoded-submenu">
 <li class=" ">
-<a href="auth-normal-sign-in.php">
+<a href="view_all_forms.php">
 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Login</span>
+<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">View All forms</span>
 <span class="pcoded-mcaret"></span>
 </a>
 </li>
-<li class=" ">
-<a href="auth-sign-up.html">
-<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Register</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-<li class=" ">
-<a href="sample-page.html">
-<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Sample Page</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-</ul>
-</li>
+     </ul>
+    </li>
 
-</ul>
--->
-
-<!--
-<div class="pcoded-navigatio-lavel" data-i18n="nav.category.other">Other</div>
-<ul class="pcoded-item pcoded-left-item">
-<li class="pcoded-hasmenu ">
-<a href="javascript:void(0)">
-<span class="pcoded-micon"><i class="ti-direction-alt"></i><b>M</b></span>
-<span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Menu Levels</span>
-<span class="pcoded-mcaret"></span>
-</a>
-<ul class="pcoded-submenu">
-<li class="">
-<a href="javascript:void(0)">
-<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-21">Menu Level 2.1</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-<li class="pcoded-hasmenu ">
-<a href="javascript:void(0)">
-<span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-22.main">Menu Level 2.2</span>
-<span class="pcoded-mcaret"></span>
-</a>
-<ul class="pcoded-submenu">
-<li class="">
-<a href="javascript:void(0)">
-<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-22.menu-level-31">Menu Level 3.1</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
-</ul>
-</li>
-<li class="">
-<a href="javascript:void(0)">
-<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-<span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-23">Menu Level 2.3</span>
-<span class="pcoded-mcaret"></span>
-</a>
-</li>
--->
 
 </ul>
 </li>

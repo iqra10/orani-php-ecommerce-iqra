@@ -30,37 +30,38 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Id</th>
-                                                            <th>Title</th>
-                                                            <th>Image</th>
-                                                            <th>Edit</th>
+                                                            <th>Username</th>
+<!--
+                                                            <th>Email</th>
+                                                            <th></th>
+-->
+                                                            <th>View</th>
                                                             <th>Delete</th>
-                                                                                                                       
-
                                                         </tr>
                                                     </thead>
                                                     <tbody>
     <?php 
  
-    $query = "SELECT * FROM departments";
+    $query = "SELECT * FROM contact" ;
     $select_users = mysqli_query($connection,$query);  
     while($row = mysqli_fetch_assoc($select_users)) {
-        $id         = $row['id'];
-        $title      = $row['title'];
-        $img        = $row['img'];
+        $id             = $row['id'];
+        $name           = $row['name'];
+        $email          = $row['email']; 
+        $message        = $row['message'];
 
         
         
     printf('   <tr>
                 <td>%s</td>
                 <td>%s</td>
-                <td><img width="100" src="../img/categories/%s" /></td>
-                <td><a href="edit_department.php?id=%s">Edit</a></td>
-                <td><a href="view_all_departments.php?delete=%s">Delete</a></td>
-
+                <td><a href="sub_forms.php?id=%s">View</a></td>
+                <td><a href="view_all_forms.php?delete=%s">Delete</a></td>
                 </tr> ',
        $id,
-       $title,
-       $img,
+       $name,
+//       $email,
+//       $password,
        $id,
        $id
           
@@ -80,19 +81,20 @@
 
                                                         
             
+            
 <?php 
 
 if(isset($_GET['delete'])) {
   
- $p_id = $_GET['delete'];
+ $id = $_GET['delete'];
     
-$delete_product = delete_department_by_id($p_id);
+$delete_user = delete_user_by_id($id);
     
-    header('Location: view_all_departments.php');
+header('Location: view_all_forms.php');
+    
         
 }
-                        
-                    
+
 
 
       

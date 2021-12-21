@@ -13,11 +13,11 @@
     <div class="card">
 
     <div class="card-block">
-    <h4>Add Product</h4>
-
-<?php
-
-if (isset( $_GET['edit'] ))  {
+    <h4>Edit Product</h4>
+        
+ <?php 
+    
+    if (isset( $_GET['edit'] ))  {
     
     $id =  $_GET['edit'];
     
@@ -26,10 +26,94 @@ if (isset( $_GET['edit'] ))  {
     $id = '';
     
 }
+    
+    
+  
+    if ( isset($_POST['update'] ) ) {
+        
+    $title       = $_POST['title'];
+	$price       = $_POST['price'];
+	$id_dep      = $_POST['dep_id'];
+	$description = $_POST['description'];
+	$info        = $_POST['info'];
+	$img         = $_FILES['img']['name'];
+	$img_temp    = $_FILES['img']['tmp_name'];
+    $rate        = $_POST['rate'];
+	$review      = $_POST['review'];
+
+	move_uploaded_file( $img_temp, "./../img/$img" );
+        
+   if(empty($img)) {
+    
+ $query = "SELECT img FROM products WHERE id = $id ";
+        $select_image = mysqli_query($connection,$query);
+            
+        while($row = mysqli_fetch_array($select_image)) {
+            
+           $img = $row['img'];
+        
+        }   
+    
+}     
+        
+        
+        
+        
+
+  $query = "UPDATE products SET ";
+        
+  $query .= "title = '{$title}', ";
+        
+  $query .= "price = '{$price}', ";
+        
+  $query .= "dep_id = '{$id_dep}', ";
+
+  $query .= "description = '{$description}', ";
+    
+  $query .= "info = '{$info}', ";
+        
+  $query .= "img = '{$img}', ";
+
+  $query .= "rate = '{$rate}', "; 
+        
+  $query .= "review = '{$review}' "; 
+        
+  $query .= "WHERE id = '{$id}' ";        
+        
+ $update_product_query = mysqli_query($connection,$query);
+        
+	echo "<p style='color: #0A77F4; font-size: 16px; padding-top: 10px;'>$title Updated.</p>";
+       
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+?>    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+<?php
+
+
   
 $products = get_product_by_id($id);
 
-    var_dump($products);
+//    var_dump($products);
 
 foreach( $products as $product ) {
     
@@ -69,36 +153,53 @@ foreach( $products as $product ) {
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Select Category</label>
         <div class="col-sm-10">
-<!--            <select name="dep_id" class="form-control">-->
+            <select name="dep_id" class="form-control">
                 
-            <input type="text" value="<?php echo $dep_id; ?>" name="dep-id" class="form-control">
-
-				<?php
                  
-//             if(isset($_GET['dep_id'])) {
-//                 
-//                 $dep_id = $_GET['dep_id'];
-//                 
-//             } else {
-//                 
-//                 $dep_id = '';
-//             }
-//
-//				$department_by_id = get_department_by_id($dep_id);
-//
-//				foreach ( $department_by_id as $department ) {
-//
-//					echo $id    = $department['id'];
-//					echo $title = $department['title'];
-//                    
-//             echo "<option value='$id'>$title</option>";
-//
-//
-//            
-// }
+                
+               <?php
+                
+                if(isset($_GET['dep_id'])) {
+                 
+                 $dep_id = $_GET['dep_id'];
+                 
+             } else {
+                 
+                 $dep_id = '';
+             }
+
+
+        $query = "SELECT * FROM departments" ;
+        $result = mysqli_query($connection,$query);
+        
+
+        while($row = mysqli_fetch_array($result)) {
+            
+        echo $id = $row['id'];
+        $title = $row['title'];
+
+
+        if($id == $dep_id) {
+
+      
+        echo "<option selected value='{$id}'>{$title}</option>";
+
+
+        } else {
+
+          echo "<option value='{$id}'>{$title}</option>";
+
+
+        }
+      
+        }
+                
+                
+                
+                
 				?>
 
-<!--            </select>-->
+            </select>
         </div>
     </div>
 
@@ -125,7 +226,123 @@ foreach( $products as $product ) {
         </div>
     </div>
         
-    <button type="submit" class="btn btn-primary" name="add" id="primary-popover-content" data-container="body"
+        
+  <div class="form-group row">
+ <div class="col-md-12">
+                    <div class="checkbox-fade fade-in-primary">
+                            <label class="col-form-label">
+                           <?php    
+                                                
+ if ( isset ($_GET['edit']) ) {
+     
+     
+ $the_id = $_GET['edit'];
+     
+ }  else {
+     
+      $the_id = '';
+     
+ }                                                              
+                                                
+                                                
+                                                
+                                                
+        $products = get_product_by_id($the_id);
+
+//    var_dump($products);
+
+foreach( $products as $product ) {
+    $id          = $product['id'];
+    $title       = $product['title'];
+	$price       = $product['price'];
+	$dep_id      = $product['dep_id'];
+	$description = $product['description'];
+	$info        = $product['info'];
+	$img         = $product['img'];
+    $rate        = $product['rate'];
+    $review      = $product['review'];
+    
+  if ($rate === 'rated') {
+                        
+                        echo "<input type='checkbox' name='rate' checked value='rated'>";
+                        
+                    }   else {
+      
+                              echo "<input type='checkbox' name='' value=''>";
+
+      
+  }
+     
+}                          
+                        ?>                                                  
+                                                
+                                                
+                                                
+                                                
+<!--                                                <input type="checkbox" name="rate" value="rated">-->
+                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                <span class="text-inverse">Rate Product</span>
+                                            </label>
+                                        </div>
+                                    </div>
+        
+        </div>
+        
+                
+                                    <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="checkbox-fade fade-in-primary">
+                                            <label class="col-form-label">
+                                                
+ <?php                                                
+ 
+ $products = get_product_by_id($the_id);
+
+//    var_dump($products);
+
+foreach( $products as $product ) {
+    $id          = $product['id'];
+    $title       = $product['title'];
+	$price       = $product['price'];
+	$dep_id      = $product['dep_id'];
+	$description = $product['description'];
+	$info        = $product['info'];
+	$img         = $product['img'];
+    $rate        = $product['rate'];
+    $review      = $product['review'];
+    
+  if ($review === 'reviewed') {
+                        
+                        echo "<input type='checkbox' name='review' checked value='reviewed'>";
+                        
+                    }   else {
+      
+                              echo "<input type='checkbox' name='review' value=''>";
+
+      
+  }
+    
+    
+    
+}
+                         
+                                                
+                        ?>    
+                                                
+                                                                                           
+                                                
+                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                <span class="text-inverse">Review Product</span>
+                                            </label>
+                                        </div>
+                                    </div>
+        
+        </div>      
+        
+        
+        
+        
+    <button type="submit" class="btn btn-primary" name="update" id="primary-popover-content" data-container="body"
             data-toggle="popover" title="Primary color states" data-placement="bottom" data-content="<div class='color-code'>
                                                                         <div class='row'>
                                                                           <div class='col-sm-6 col-xs-12'>

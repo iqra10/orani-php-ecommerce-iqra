@@ -18,7 +18,6 @@
 <?php
 
 if ( isset( $_POST['add'] ) ) {
-    global $connection;
 
 	$title       = $_POST['title'];
 	$price       = $_POST['price'];
@@ -27,13 +26,16 @@ if ( isset( $_POST['add'] ) ) {
 	$info        = $_POST['info'];
 	$img         = $_FILES['img']['name'];
 	$img_temp    = $_FILES['img']['tmp_name'];
+    $rate        = $_POST['rate'];
+    $review      = $_POST['review'];
 
+    
 	move_uploaded_file( $img_temp, "./../img/$img" );
 
 
-	$query = "INSERT INTO products(title, img, price, description, info, dep_id) ";
+	$query = "INSERT INTO products(title, img, price, description, info, dep_id, rate, review) ";
 
-	$query .= "VALUES('{$title}', '{$img}', '{$price}', '{$description}', '{$info}', '{$id_dep}') ";
+	$query .= "VALUES('{$title}', '{$img}', '{$price}', '{$description}', '{$info}', '{$id_dep}', '{$rate}', '{$review}') ";
 
     mysqli_query( $connection, $query);
 
@@ -106,6 +108,34 @@ if ( isset( $_POST['add'] ) ) {
             <input type="file" name="img" class="form-control">
         </div>
     </div>
+        
+        
+
+                        <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="checkbox-fade fade-in-primary">
+                                <label class="col-form-label">
+                                    <input type="checkbox" name="rate" value="rated">
+                                    <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                    <span class="text-inverse">Rate Product</span>
+                                </label>
+                            </div>
+                        </div>
+                       </div>
+        
+                
+                            <div class="form-group row">
+                            <div class="col-md-12">
+                            <div class="checkbox-fade fade-in-primary">
+                                <label class="col-form-label">
+                                    <input type="checkbox" name="review" value="reviewed">
+                                    <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                    <span class="text-inverse">Review Product</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+        
 
     <button type="submit" class="btn btn-primary" name="add" id="primary-popover-content" data-container="body"
             data-toggle="popover" title="Primary color states" data-placement="bottom" data-content="<div class='color-code'>

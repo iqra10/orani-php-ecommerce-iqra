@@ -1,5 +1,5 @@
 <?php
-//include_once 'db.php';
+include_once 'db.php';
 
 function sanitize_key( $key ) {
 	$raw_key = $key;
@@ -33,18 +33,10 @@ function get_department_by_id( $dep_id ) {
     
     global $connection;
 
-	$query = "SELECT * FROM departments WHERE  id='{$dep_id}'" ;
+	$query = "SELECT * FROM departments WHERE id='{$dep_id}'" ;
         
-    $result = mysqli_query( $connection, $query );
-    
-    $departments = [];
-    
-	while($department = mysqli_fetch_array($result)){ 
+    return mysqli_fetch_array(mysqli_query( $connection, $query ));
         
-		$departments[] = $department;
-	}
-	return $departments;
-
 }
 
 

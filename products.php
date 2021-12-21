@@ -1,5 +1,5 @@
 <?php include 'includes/header.php'?>
-
+ 
 
     <!-- Header Section End -->
 
@@ -49,10 +49,24 @@ foreach ( $departments as $department ) {
 							$img   = $department['img'];
                                                
                             
-   echo "<li><a href='shop-grid.php?p_id={$id}'>$title</a></li>";
+   echo "<li><a href='products.php?p_id={$id}'>$title</a></li>";
                       
 }
-                       
+                               
+                        
+$product_per_page = 6;
+                        
+$query = "SELECT * FROM products" ;
+                        
+$result = mysqli_query( $connection, $query );
+                        
+$count = mysqli_num_rows( $result );
+                        
+$page_products = ceil( $count / $product_per_page );                       
+                        
+echo $page_products;                        
+                        
+                        
                         
 ?>              
                                 
@@ -76,6 +90,11 @@ foreach ( $departments as $department ) {
                                 </div>
                             </div>
                         </div>
+              
+                     
+                        
+                        
+                        
                         <div class="sidebar__item sidebar__item__color--option">
                             <h4>Colors</h4>
                             <div class="sidebar__item__color sidebar__item__color--white">
@@ -146,64 +165,58 @@ foreach ( $departments as $department ) {
                             <div class="latest-product__text">
                                 <h4>Latest Products</h4>
                                 <div class="latest-product__slider owl-carousel">
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-1.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-2.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-3.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-1.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-2.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="img/latest-product/lp-3.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                    </div>
+                                    
+                                    
+                                    <?php
+
+						$latest_products = get_latest_products();
+						$total_products  = count( $latest_products );
+
+						$counter            = 0;
+						$products_per_slide = 3;
+
+						foreach ( $latest_products as $product ) :
+
+							$modula = $counter % $products_per_slide;
+
+							$counter ++;
+
+							if ( $modula === 0 ) {
+								echo '<div class="latest-prdouct__slider__item">';
+							}
+
+
+							$id          = $product['id'];
+							$title       = $product['title'];
+							$img         = $product['img'];
+							$id_dep      = $product['dep_id'];
+							$price       = $product['price'];
+							$description = $product['description'];
+
+							printf( '<a href="product_details.php?id=%s&dep_id=%s" class="latest-product__item">
+                                                    <div class="latest-product__item__pic">
+                                                        <img src="img/%s" alt="">
+                                                    </div>
+                                                    <div class="latest-product__item__text">
+                                                        <h6>%s</h6>
+                                                        <span>$%s</span>
+                                                    </div>
+                                                </a>',
+								$id,
+                                $id_dep,
+                                $img,
+								$title,
+								$price,
+							);
+
+							if ( ( $modula === $products_per_slide - 1 ) || $counter === $total_products ) {
+								echo '</div>';
+							}
+
+
+						endforeach;
+						?> 
+
                                 </div>
                             </div>
                         </div>
@@ -402,7 +415,7 @@ printf('    <div class="col-lg-4 col-md-6 col-sm-6">
                     <ul class="product__item__pic__hover">
                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="shop-details.php?id=%s&dep_id=%s"><i class="fa fa-shopping-cart"></i></a></li>
+                        <li><a href="product_details.php?id=%s&dep_id=%s"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
                 </div>
                 <div class="product__item__text">
@@ -428,9 +441,10 @@ printf('    <div class="col-lg-4 col-md-6 col-sm-6">
       
  
   
-?>                        
+?>   
                         
-
+                  
+                        
 
                     </div>
                     <div class="product__pagination">

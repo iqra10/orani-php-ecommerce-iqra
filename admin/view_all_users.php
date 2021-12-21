@@ -33,6 +33,8 @@
                                                             <th>Username</th>
                                                             <th>Email</th>
                                                             <th>Password</th>
+                                                            <th>Edit</th>
+                                                            <th>Delete</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -53,11 +55,15 @@
                 <td>%s</td>
                 <td>%s</td>
                 <td>%s</td>
+                <td><a href="edit_user.php?edit=%s">Edit</a></td>
+                <td><a href="view_all_users.php?delete=%s">Delete</a></td>
                 </tr> ',
        $id,
        $username,
        $email,
-       $password
+       $password,
+       $id,
+       $id
           
           );    
                                                         
@@ -75,14 +81,19 @@
 
                                                         
             
+            
 <?php 
 
-//if(isset($_GET['delete'])) {
-//  
-// $the_user_id = $_GET['delete'];
-//
-//
-//}
+if(isset($_GET['delete'])) {
+  
+ $id = $_GET['delete'];
+    
+$delete_user = delete_user_by_id($id);
+    
+  header('Location: view_all_users.php');
+
+        
+}
 
 
 

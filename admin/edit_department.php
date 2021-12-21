@@ -21,15 +21,20 @@ if (isset($_GET['id'])) {
     
    $the_id = $_GET['id'];
     
-$departments = get_department_by_id( $the_id );
+
+    
+$query = "SELECT * FROM departments WHERE id = '{$the_id}'" ;    
+    $result = mysqli_query($connection, $query);
     
     
-    foreach ( $departments as $department ) {
+    while ( $row = mysqli_fetch_array($result) ) {
+        $title = $row['title'];
+        $img = $row['img'];
         
-        $title = $department['title'];
-        $img = $department['img'];
         
-    }                                        
+        
+    }
+    
        
 }
       ?>      

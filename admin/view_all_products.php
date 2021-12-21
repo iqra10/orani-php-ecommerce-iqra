@@ -99,6 +99,9 @@ if(isset($_GET['delete'])) {
  $p_id = $_GET['delete'];
     
 $delete_product = delete_product_by_id($p_id);
+    
+header('Location: view_all_products.php');
+
         
 }
                         

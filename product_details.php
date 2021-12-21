@@ -43,7 +43,7 @@ $query = "SELECT * FROM departments WHERE id = '{$dep_id}' ";
 printf(' <h2>%s</h2>
             <div class="breadcrumb__option">
             <a href="index.php">Home</a>
-            <a href="shop-grid.php?p_name=%s">%s</a>
+            <a href="products.php?p_id=%s">%s</a>
             <span>%s</span>
             </div>' , 
       $title,
@@ -161,27 +161,7 @@ echo "<p>$description</p>";
 
 <?php 
   
-//  $query = "SELECT * FROM products ";
-//
-//  $result = mysqli_query($connection, $query);
-//
-//  while($row = mysqli_fetch_array($result)) {
-//      
-//    $id = $row['id'];
-//    $title = $row['title'];
-//    $img = $row['img'];
-//    $id_dep = $row['id_dep'];
-//    $price = $row['price'];    
-//    $description = $row['description'];                               
-//                                
-//  printf(' 
-//  
-//  
-//  ',
-//        
-//    );                              
-//  }
-                                
+                        
 ?>                                
                                 
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
@@ -276,10 +256,7 @@ echo "<p>$description</p>";
                 </div>
             </div>
             <div class="row">
-<!--
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
--->
+
  
    
    <?php 
@@ -304,7 +281,7 @@ foreach ( $products as $product) {
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="shop-details.php?id=%s&dep_id=%s"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href="product_details.php?id=%s&dep_id=%s"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
