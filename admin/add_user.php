@@ -20,24 +20,21 @@
  if(isset($_POST['add_user'])) {
      
       $username = $_POST['username'];
-      $email = $_POST['email'];
       $password = $_POST['password'];
      
 
 $username = mysqli_real_escape_string($connection, $username);
     
-$email = mysqli_real_escape_string($connection, $email);
-
 $paswword = mysqli_real_escape_string($connection, $password);   
     
-$crypt_password = crypt($password, 'iusesomecrazystrings22');  
+//$crypt_password = crypt($password, 'iusesomecrazystrings22');  
      
      
      
      
-$query = "INSERT INTO users(username, email, password)" ;
+$query = "INSERT INTO users(username, password)" ;
 
-$query .= "VALUES('{$username}', '{$email}', '{$crypt_password}')" ;
+$query .= "VALUES('{$username}', '{$password}')" ;
      
 $add_query = mysqli_query($connection, $query);
      
@@ -53,13 +50,6 @@ $add_query = mysqli_query($connection, $query);
                                                             <label class="col-sm-2 col-form-label">Username</label>
                                                             <div class="col-sm-10">
                                                                 <input type="text" name="username" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-2 col-form-label">Email</label>
-                                                            <div class="col-sm-10">
-                                                                <input type="email" name="email" class="form-control">
                                                             </div>
                                                         </div>
                                                         

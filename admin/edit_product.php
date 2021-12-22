@@ -38,8 +38,9 @@
 	$info        = $_POST['info'];
 	$img         = $_FILES['img']['name'];
 	$img_temp    = $_FILES['img']['tmp_name'];
-    $rate        = $_POST['rate'];
-	$review      = $_POST['review'];
+    $status      = $_POST['status'];
+//    $rate        = $_POST['rate'];
+//	$review      = $_POST['review'];
 
 	move_uploaded_file( $img_temp, "./../img/$img" );
         
@@ -73,10 +74,13 @@
   $query .= "info = '{$info}', ";
         
   $query .= "img = '{$img}', ";
-
-  $query .= "rate = '{$rate}', "; 
         
-  $query .= "review = '{$review}' "; 
+  $query .= "status = '{$status}' "; 
+        
+//
+//  $query .= "rate = '{$rate}', "; 
+//        
+//  $query .= "review = '{$review}' "; 
         
   $query .= "WHERE id = '{$id}' ";        
         
@@ -87,26 +91,10 @@
         
         
     }
-    
-    
-    
-    
-    
-    
+     
     
 ?>    
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
 <?php
 
 
@@ -123,14 +111,11 @@ foreach( $products as $product ) {
 	$description = $product['description'];
 	$info        = $product['info'];
 	$img         = $product['img'];
-    
-    
-    
-    
+    $status      = $product['status'];
+  
 }
      
-//
-//	echo "<p style='color: #0A77F4; font-size: 16px; padding-top: 10px;'>$title Added.</p>";
+
 
 
 
@@ -175,7 +160,7 @@ foreach( $products as $product ) {
 
         while($row = mysqli_fetch_array($result)) {
             
-        echo $id = $row['id'];
+        $id = $row['id'];
         $title = $row['title'];
 
 
@@ -194,10 +179,7 @@ foreach( $products as $product ) {
       
         }
                 
-                
-                
-                
-				?>
+ ?>
 
             </select>
         </div>
@@ -225,6 +207,39 @@ foreach( $products as $product ) {
             <input type="file" name="img" class="form-control">
         </div>
     </div>
+        
+        
+             <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Product Status</label>
+        <div class="col-sm-10">
+            <select name="status" class="form-control">
+                
+
+        
+          
+          
+          
+          <?php
+         
+        if ( isset($_GET['status'] ) ) {
+            
+            $the_status = $_GET['status'];
+            
+        }    
+
+        ?>
+      
+                 
+      
+    <option value="Publish" <?php if($status == 'Publish') echo 'selected'; ?> >Publish</option>
+                
+                
+    <option value="Draft" <?php if($status == 'Draft') echo 'selected'; ?> >Draft</option>
+        
+            </select>
+            </div>
+        </div>
+        
         
         
   <div class="form-group row">
@@ -262,24 +277,14 @@ foreach( $products as $product ) {
     $rate        = $product['rate'];
     $review      = $product['review'];
     
-  if ($rate === 'rated') {
-                        
-                        echo "<input type='checkbox' name='rate' checked value='rated'>";
-                        
-                    }   else {
-      
-                              echo "<input type='checkbox' name='' value=''>";
-
-      
-  }
-     
-}                          
-                        ?>                                                  
+}
+                                
+?>                                
                                                 
                                                 
                                                 
                                                 
-<!--                                                <input type="checkbox" name="rate" value="rated">-->
+                                                <input type="checkbox" name="rate" value="rated">
                                                 <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                                                 <span class="text-inverse">Rate Product</span>
                                             </label>
@@ -310,96 +315,23 @@ foreach( $products as $product ) {
 	$img         = $product['img'];
     $rate        = $product['rate'];
     $review      = $product['review'];
-    
-  if ($review === 'reviewed') {
-                        
-                        echo "<input type='checkbox' name='review' checked value='reviewed'>";
-                        
-                    }   else {
-      
-                              echo "<input type='checkbox' name='review' value=''>";
-
-      
-  }
-    
-    
-    
 }
-                         
-                                                
                         ?>    
                                                 
                                                                                            
-                                                
-                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                                <span class="text-inverse">Review Product</span>
-                                            </label>
-                                        </div>
-                                    </div>
-        
-        </div>      
-        
-        
-        
-        
-    <button type="submit" class="btn btn-primary" name="update" id="primary-popover-content" data-container="body"
-            data-toggle="popover" title="Primary color states" data-placement="bottom" data-content="<div class='color-code'>
-                                                                        <div class='row'>
-                                                                          <div class='col-sm-6 col-xs-12'>
-                                                                            <span class='block'>Normal</span>
-                                                                            <span class='block'>
-                                                                              <small>#4680ff</small>
-                                                                          </span>
-                                                                      </div>
-                                                                      <div class='col-sm-6 col-xs-12'>
-                                                                        <div class='display-color' style='background-color:#4680ff;'></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                    <input type="checkbox" name="review" value="review">
 
-                                                            <div class='color-code'>
-                                                              <div class='row'>
-                                                                <div class='col-sm-6 col-xs-12'>
-                                                                  <span class='block'>Hover</span>
-                                                                  <span class='block'>
-                                                                    <small>#79a3ff</small>
-                                                                </span>
-                                                            </div>
-                                                            <div class='col-sm-6 col-xs-12'>
-                                                              <div class='display-color' style='background-color:#79a3ff;'></div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-
-                                                      <div class='color-code'>
-                                                          <div class='row'>
-                                                            <div class='col-sm-6 col-xs-12'>
-                                                              <span class='block'>Active</span>
-                                                              <span class='block'>
-                                                                <small>#0956ff</small>
-                                                            </span>
-                                                        </div>
-                                                        <div class='col-sm-6 col-xs-12'>
-                                                          <div class='display-color' style='background-color:#0956ff;'></div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-
-                                                          <div class='color-code'>
-                                                              <div class='row'>
-                                                                <div class='col-sm-6 col-xs-12'>
-                                                                  <span class='block'>Disabled</span>
-                                                                  <span class='block'>
-                                                                    <small>#c3d5ff</small>
-                                                                </span>
-                                                            </div>
-                                                            <div class='col-sm-6 col-xs-12'>
-                                                              <div class='display-color' style='background-color:#c3d5ff;'></div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-
-                                                  ">Primary button
+                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                <span class="text-inverse">Review Product</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>      
+        
+        
+        
+        
+    <button type="submit" class="btn btn-primary" name="update" id="primary-popover-content">Update 
     </button>
 
 

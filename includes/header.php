@@ -2,6 +2,7 @@
 include 'db.php';
 include_once 'function.php';
 ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -60,6 +61,7 @@ include_once 'function.php';
             <ul>
                 <li class="active"><a href="./index.php">Home</a></li>
                 <li><a href="./shop.php">Shop</a></li>
+<!--
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.php">Shop Details</a></li>
@@ -68,6 +70,7 @@ include_once 'function.php';
                         <li><a href="./blog-details.php">Blog Details</a></li>
                     </ul>
                 </li>
+-->
                 <li><a href="./blog.php">Blog</a></li>
                 <li><a href="./contact.php/">Contact</a></li>
             </ul>
@@ -140,6 +143,18 @@ include_once 'function.php';
                         <ul>
                             <li class="active"><a href="./index.php">Home</a></li>
                             <li><a href="./shop.php">Shop</a></li>
+                                                 
+                    <?php 
+                    
+  if(isset($_SESSION['username']) && isset($_SESSION['password'])){ 
+      
+   echo "<li><a href='/orani-php-ecommerce-iqra/admin/index.php'>Admin</a></li>";   
+      
+  }
+      
+  ?> 
+                            
+<!--
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.php">Shop Details</a></li>
@@ -148,8 +163,10 @@ include_once 'function.php';
                                     <li><a href="./blog-details.php">Blog Details</a></li>
                                 </ul>
                             </li>
+-->
                             <li><a href="./blog.php">Blog</a></li>
                             <li><a href="./contact.php">Contact</a></li>
+               
                         </ul>
                     </nav>
                 </div>

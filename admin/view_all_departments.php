@@ -1,18 +1,25 @@
 <?php include 'includes/header.php' ?>
             
-            
 <!-- nav -->
  <?php include 'includes/nav.php' ?>
 
+     <div class="pcoded-content">
+                                              
+                                              
+         <p style="background-color: white; color: #0A77F4; margin: 10px; line-height: 4em; font-size: 20px; padding-left: 10px;"> <?php echo $_SESSION['status']; ?></p>
+                                              
+                                              
+        </div>      
 
+    
 <div class="pcoded-content">
                         <div class="pcoded-inner-content">
                                     <div class="page-body">
                                         <div class="row">
                                             <div class="col-sm-12">
-
-                                                     <div class="card">
-                                        <div class="card-header">
+                                            <div class="card">
+                                                
+                                          <div class="card-header">
                                             <div class="card-header-right">
 												<ul class="list-unstyled card-option">
 													<li><i class="fa fa-chevron-left"></i></li>
@@ -79,25 +86,26 @@
                                     </div>
 
                                                         
-            
-<?php 
-
-if(isset($_GET['delete'])) {
+  <?php          
+                       
+  if(isset($_GET['delete'])) {
   
- $p_id = $_GET['delete'];
+ $id = $_GET['delete'];
     
-$delete_product = delete_department_by_id($p_id);
-    
-    header('Location: view_all_departments.php');
-        
-}
-                        
-                    
+ $delete_product = delete_department_by_id($id);
+               
+ $_SESSION['status'] = "Deleted successfully";  
+     
+ header('Location: view_all_departments.php');
 
-
+     
+ } else {
       
-
-
-?>
+      $_SESSION['status'] = "";  
+ 
+      
+  }
+                                                
+?>                                                
 
 <?php include "includes/footer.php" ?>

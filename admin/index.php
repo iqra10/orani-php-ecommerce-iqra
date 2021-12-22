@@ -46,7 +46,7 @@ printf( ' <h6 class="m-b-20">Departments</h6>
     
 <?php    
     
-$query = "SELECT * FROM products" ;
+$query = "SELECT * FROM products WHERE status = 'Publish'" ;
 
 $select_query = mysqli_query($connection, $query);
 
@@ -89,11 +89,24 @@ printf( ' <h6 class="m-b-20">Users</h6>
 </div>
 </div>
 <div class="col-md-6 col-xl-3">
-<div class="card bg-c-pink order-card">
+<div class="card bg-c-yellow order-card">
 <div class="card-block">
-<h6 class="m-b-20">Total Profit</h6>
-<h2 class="text-right"><i class="ti-wallet f-left"></i><span>$9,562</span></h2>
-<p class="m-b-0">This Month<span class="f-right">$542</span></p>
+<?php    
+    
+$query = "SELECT * FROM products WHERE status = 'Draft'" ;
+
+$select_query = mysqli_query($connection, $query);
+
+$count = mysqli_num_rows($select_query);
+
+printf( ' <h6 class="m-b-20">Draft Products</h6>
+<h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>%s</span></h2>',
+      
+    $count  
+      );
+
+    
+?>
 </div>
 </div>
 </div>

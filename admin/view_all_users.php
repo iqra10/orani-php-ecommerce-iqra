@@ -5,6 +5,18 @@
  <?php include 'includes/nav.php' ?>
 
 
+     <div class="pcoded-content">
+                                              
+                                              
+         <p style="background-color: white; color: #0A77F4; margin: 10px; line-height: 4em; font-size: 20px; padding-left: 10px;"> <?php echo $_SESSION['status']; ?></p>
+                                              
+                                              
+        </div>  
+
+
+
+
+
 <div class="pcoded-content">
                         <div class="pcoded-inner-content">
                                     <div class="page-body">
@@ -12,6 +24,10 @@
                                             <div class="col-sm-12">
 
                                                      <div class="card">
+                                                
+                                                         
+                                                         
+                                                         
                                         <div class="card-header">
                                             <div class="card-header-right">
 												<ul class="list-unstyled card-option">
@@ -31,7 +47,6 @@
                                                         <tr>
                                                             <th>Id</th>
                                                             <th>Username</th>
-                                                            <th>Email</th>
                                                             <th>Password</th>
                                                             <th>Edit</th>
                                                             <th>Delete</th>
@@ -45,7 +60,6 @@
     while($row = mysqli_fetch_assoc($select_users)) {
         $id             = $row['id'];
         $username       = $row['username'];
-        $email          = $row['email']; 
         $password       = $row['password'];
 
         
@@ -54,13 +68,11 @@
                 <td>%s</td>
                 <td>%s</td>
                 <td>%s</td>
-                <td>%s</td>
                 <td><a href="edit_user.php?edit=%s">Edit</a></td>
                 <td><a href="view_all_users.php?delete=%s">Delete</a></td>
                 </tr> ',
        $id,
        $username,
-       $email,
        $password,
        $id,
        $id
@@ -80,9 +92,8 @@
                                     </div>
 
                                                         
-            
-            
-<?php 
+                                                            
+        <?php 
 
 if(isset($_GET['delete'])) {
   
@@ -90,16 +101,20 @@ if(isset($_GET['delete'])) {
     
 $delete_user = delete_user_by_id($id);
     
-  header('Location: view_all_users.php');
+                   
+ $_SESSION['status'] = "Deleted successfully";  
+     
+ header('Location: view_all_users.php');
 
-        
-}
-
-
-
+     
+ } else {
       
+      $_SESSION['status'] = "";  
+ 
+      
+  }
 
 
-?>
+?>          
 
 <?php include "includes/footer.php" ?>

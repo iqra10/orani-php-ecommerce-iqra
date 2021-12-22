@@ -154,7 +154,7 @@
 
 			<?php
 			// Product Loop
-			$product_query = "SELECT * FROM products";
+			$product_query = "SELECT * FROM products WHERE status = 'Publish'";
 
 			$products_result = mysqli_query( $connection, $product_query );
 
@@ -179,7 +179,7 @@
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">%s</a></h6>
+                        <h6><a href="product_details.php?id=%s&dep_id=%s">%s</a></h6>
                         <h5>%s</h5>
                     </div>
                 </div>
@@ -188,6 +188,8 @@
 					$img,
 					$id,
 					$dep_id,
+                    $id,
+                    $dep_id,
 					$title,
 					$price
 				);
@@ -240,7 +242,7 @@
 
 						<?php
 
-						$latest_products = get_latest_products();
+						$latest_products = get_latest_products_by_status();
 						$total_products  = count( $latest_products );
 
 						$counter            = 0;
@@ -270,7 +272,7 @@
                                                     </div>
                                                     <div class="latest-product__item__text">
                                                         <h6>%s</h6>
-                                                        <span>$%s</span>
+                                                        <span>%s</span>
                                                     </div>
                                                 </a>',
 								$id,

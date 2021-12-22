@@ -45,7 +45,7 @@
       $id = $row['id'];
       $title = $row['title'];
       
-   echo "<li><a href='products.php?p_name={$title}'>$title</a></li>";
+   echo "<li><a href='products.php?p_id={$id}'>$title</a></li>";
   }                        
                         
         
@@ -147,7 +147,7 @@
                                     
                                     <?php
 
-						$latest_products = get_latest_products();
+						$latest_products = get_latest_products_by_status();
 						$total_products  = count( $latest_products );
 
 						$counter            = 0;
@@ -341,7 +341,7 @@
                                     
 <?php 
 
-$query = "SELECT * FROM products" ;
+$query = "SELECT * FROM products WHERE status = 'Publish'" ;
 
 $select_query = mysqli_query($connection, $query);
 
@@ -403,7 +403,7 @@ printf(' <h6><span>%s</span> Products found</h6>',
   
                 
                 
-        $query = "SELECT * FROM products LIMIT $page_1, $per_page ";
+        $query = "SELECT * FROM products WHERE status = 'Publish' LIMIT $page_1, $per_page ";
         $select_all_posts_query = mysqli_query($connection,$query);                        
                         
  
@@ -430,12 +430,14 @@ while ( $product = mysqli_fetch_array($select_all_posts_query)) {
 															</ul>
 														</div>
 														<div class="product__item__text">
-															<h6><a href="product_details.php">%s</a></h6>
+															<h6><a href="product_details.php?id=%s&dep_id=%s">%s</a></h6>
 															<h5>%s</h5>
 														</div>
 													</div>
 												</div>',
 	                            $img,
+                                $id,
+                                $dep_id,
                                 $id,
                                 $dep_id,
 	                            $title,

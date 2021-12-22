@@ -58,7 +58,7 @@
                            <div class="media">
                                <img class="d-flex align-self-center img-radius" src="assets/images/avatar-2.jpg" alt="Generic placeholder image">
                                <div class="media-body">
-                                   <h5 class="notification-user"><?php echo $_SESSION['email'] ?></h5>
+                                   <h5 class="notification-user"><?php echo $_SESSION['username'] ?></h5>
                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
                                    <span class="notification-time">30 minutes ago</span>
                                </div>
@@ -90,7 +90,7 @@
                <li class="user-profile header-notification">
                    <a href="#">
                        <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                       <span>John</span>
+                       <span><?php echo $_SESSION['username'] ?></span>
                        <i class="ti-angle-down"></i>
                    </a>
                    <ul class="show-notification profile-notification">
@@ -210,6 +210,18 @@
 </a>
 </li>
     </ul>
+    
+<ul class="pcoded-submenu">
+<li class=" ">
+<a href="add_user.php">
+<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+<span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Add Users</span>
+<span class="pcoded-mcaret"></span>
+</a>
+</li>
+    </ul>    
+    
+    
     
 <li class="pcoded-hasmenu">
 <a href="javascript:void(0)">

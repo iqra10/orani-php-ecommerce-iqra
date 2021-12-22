@@ -3,6 +3,17 @@
 
 <?php session_start(); ?>
 <?php ob_start(); ?> 
+<?php 
+
+if ( !isset($_SESSION['username'] ) && !isset($_SESSION['password'] ) ) {
+    
+    header('Location: sign-in.php');
+    
+} 
+
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">

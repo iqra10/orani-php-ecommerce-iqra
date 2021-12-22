@@ -54,27 +54,25 @@
     
 if (isset ( $_POST['login'] ) ) {  
   
- $email = $_POST['email'];
+ $username = $_POST['username'];
  $password = $_POST['password'];
     
     
-if ( !empty( $email ) && !empty( $password ) )   {
+if ( !empty( $username ) && !empty( $password ) )   {
     
-$query = "SELECT * FROM users WHERE email = '{$email}'" ;
+$query = "SELECT * FROM users WHERE username= '{$username}'" ;
 
 $result = mysqli_query($connection, $query);
 
 while($row = mysqli_fetch_array($result)) {
     
     $db_username   = $row['username'];
-    $db_email      = $row['email'];
     $db_password   = $row['password'];
 
 
-if($db_email == $email && $db_password == $password) {
+if($db_username == $username && $db_password == $password) {
     
-   echo $_SESSION['username'] = $db_username;  
-   $_SESSION['email'] = $db_email;  
+   $_SESSION['username'] = $db_username;  
    $_SESSION['password'] = $db_password;  
 
   header('Location: index.php');
@@ -112,7 +110,7 @@ if($db_email == $email && $db_password == $password) {
                                 </div>
                                 <hr/>
                                 <div class="input-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Your Email Address">
+                                    <input type="text" name="username" class="form-control" placeholder="Username">
                                     <span class="md-line"></span>
                                 </div>
                                 <div class="input-group">

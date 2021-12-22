@@ -157,7 +157,7 @@ foreach ( $departments as $department ) {
                                     
                                     <?php
 
-						$latest_products = get_latest_products();
+						$latest_products = get_latest_products_by_status();
 						$total_products  = count( $latest_products );
 
 						$counter            = 0;
@@ -355,7 +355,7 @@ foreach ( $departments as $department ) {
   }
       
                                           
-$count = get_total_products_num_by_id($dep_id);  
+$count = get_total_products_num_by_status_by_id($dep_id);  
 
 //var_dump($count);                                    
                                     
@@ -383,7 +383,7 @@ printf(' <h6><span>%s</span> Products found</h6>',
  <?php 
                         
   
-    $products = get_products_by_id($dep_id);
+    $products = get_products_by_status_by_id($dep_id);
 //      
 ////      var_dump($products);
 //      
@@ -407,13 +407,15 @@ printf('    <div class="col-lg-4 col-md-6 col-sm-6">
                     </ul>
                 </div>
                 <div class="product__item__text">
-                    <h6><a href="shop-details.php?id=%s&dep_id=%s">%s</a></h6>
+                    <h6><a href="product_details.php?id=%s&dep_id=%s">%s</a></h6>
                     <h5>$%s</h5>
                 </div>
             </div>
         </div> ',
       
        $img,
+       $id,
+       $dep_id,
        $id,
        $dep_id,
        $title,

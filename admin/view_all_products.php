@@ -4,6 +4,18 @@
 <!-- nav -->
  <?php include 'includes/nav.php' ?>
 
+     <div class="pcoded-content">
+                                              
+                                              
+         <p style="background-color: white; color: #0A77F4; margin: 10px; line-height: 4em; font-size: 20px; padding-left: 10px;"> <?php echo $_SESSION['status']; ?></p>
+                                              
+                                              
+        </div>  
+
+
+
+
+
 
 <div class="pcoded-content">
                         <div class="pcoded-inner-content">
@@ -35,7 +47,8 @@
                                     <th>Price</th>
                                     <th>Department</th>
                                     <th>Image</th>
-                                    <th>Edit</th>
+                                    <th>Status</th> 
+                                    <th>View</th>                                                     <th>Edit</th>
                                     <th>Delete</th>
 
 
@@ -53,6 +66,7 @@
         $price          = $row['price']; 
         $dep_id         = $row['dep_id'];
         $img            = $row['img'];
+        $status         = $row['status'];
  
 
         
@@ -63,7 +77,9 @@
                 <td>%s</td>
                 <td>%s</td>
                 <td><img width="100" src="../img/%s" /></td>
-                <td><a href="edit_product.php?edit=%s&dep_id=%s">Edit</a></td>
+                <td>%s</td>
+                <td><a href="/orani-php-ecommerce-iqra/product_details.php?id=%s&dep_id=%s">View</a></td>
+                <td><a href="edit_product.php?edit=%s&dep_id=%s&status=%s">Edit</a></td>
                 <td><a href="view_all_products.php?delete=%s">Delete</a></td>
                 </tr>',
     
@@ -72,8 +88,12 @@
         $price,
         $dep_id,
         $img,
+        $status,
         $id,
         $dep_id,
+        $id,
+        $dep_id,
+        $status,
         $id
           
           );    
@@ -100,10 +120,20 @@ if(isset($_GET['delete'])) {
     
 $delete_product = delete_product_by_id($p_id);
     
-header('Location: view_all_products.php');
+               
+ $_SESSION['status'] = "Deleted successfully";  
+     
+ header('Location: view_all_products.php');
 
+     
+ } else {
+      
+      $_SESSION['status'] = "";  
+ 
+      
+  }
         
-}
+
                         
                         
 ?>

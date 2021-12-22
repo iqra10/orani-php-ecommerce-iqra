@@ -55,9 +55,9 @@ function get_departments() {
 
 }
 
-function get_total_products_num() {
+function get_total_products_num_by_status() {
     
-    $query = "SELECT * FROM products" ;
+    $query = "SELECT * FROM products WHERE status = 'Publish'" ;
     
     global $connection;
     
@@ -70,9 +70,9 @@ function get_total_products_num() {
 }
 
 
-function get_total_products_num_by_id($dep_id) {
+function get_total_products_num_by_status_by_id($dep_id) {
     
-    $query = "SELECT * FROM products WHERE dep_id = '{$dep_id}' LIMIT 3 ";
+    $query = "SELECT * FROM products WHERE dep_id = '{$dep_id}'AND status = 'Publish' LIMIT 3 ";
     
     global $connection;
     
@@ -104,11 +104,11 @@ function get_products() {
     
    
 
-function get_products_by_id($dep_id) {
+function get_products_by_status_by_id($dep_id) {
     
     global $connection;
 
-	$query = "SELECT * FROM products WHERE dep_id='{$dep_id}' LIMIT 4 ";
+	$query = "SELECT * FROM products WHERE dep_id='{$dep_id}' AND status = 'Publish' LIMIT 4 ";
         
     $result = mysqli_query( $connection, $query );
     
@@ -123,11 +123,11 @@ function get_products_by_id($dep_id) {
 }
 
 
-function get_latest_products() {
+function get_latest_products_by_status() {
     
   global $connection;
 
-	$query = "SELECT * FROM products LIMIT 6 ";
+	$query = "SELECT * FROM products WHERE status = 'Publish' LIMIT 6";
     
 //    $query .= "ORDER BY id DESC ";
     

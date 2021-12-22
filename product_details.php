@@ -265,7 +265,7 @@ if( isset($_GET['dep_id'])) {
   
     $dep_id = $_GET['dep_id'];
     
-  $products = get_products_by_id($dep_id);
+  $products = get_products_by_status_by_id($dep_id);
       
 foreach ( $products as $product) {
     
