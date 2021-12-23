@@ -126,7 +126,7 @@ if ( isset( $_POST['add'] ) ) {
         <div class="col-md-12">
             <div class="checkbox-fade fade-in-primary">
                 <label class="col-form-label">
-                    <input type="checkbox" name="rate" value="1">
+                    <input type="checkbox" name="rate" value="1" />
                     <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                     <span class="text-inverse">Rate Product</span>
                 </label>
@@ -151,6 +151,6 @@ if ( isset( $_POST['add'] ) ) {
     <button type="submit" class="btn btn-primary" name="add" id="primary-popover-content">Add Product
     </button>
 
-
+        </form>
 
 <?php include "includes/footer.php" ?>

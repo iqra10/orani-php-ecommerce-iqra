@@ -37,16 +37,13 @@ $result = mysqli_query($connection, $query);
 while ( $row = mysqli_fetch_array($result) ){
     
     $id       = $row['id'];
+    
     $username = $row['username'];
+    
     $password = $row['password'];
     
 }
-     
-//    echo "<p style='color: #0A77F4; font-size: 16px; padding-top: 10px;'>User Added.</p>";
 
-
-     
- 
                                                     
 ?>   
 
@@ -57,7 +54,7 @@ while ( $row = mysqli_fetch_array($result) ){
       $username = $_POST['username'];
       $password = $_POST['password'];
       
- $crypt_password = crypt($password, "iusesomecrazystrings22");      
+// $crypt_password = crypt($password, "iusesomecrazystrings22");      
       
           $query = "UPDATE users SET ";
           $query .="username  = '{$username}', ";
@@ -78,26 +75,23 @@ $update_query = mysqli_query($connection, $query);
                                                     
 ?>                                                    
                                                     
-                                                    <form method="post" enctype="multipart/form-data">
-                                                        <div class="form-group row">
-                                                            <label class="col-sm-2 col-form-label">Username</label>
-                                                            <div class="col-sm-10">
-                                                                <input type="text" value="<?php echo $username; ?>" name="username" class="form-control">
-                                                            </div>
-                                                        </div>
+                            <form method="post" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Username</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" value="<?php echo $username; ?>" name="username" class="form-control">
+                                    </div>
+                                </div>
                                                         
-                                                        
-                                                        
-                                                           <div class="form-group row">
-                                                                    <label class="col-sm-2 col-form-label">Password</label>
-                                                                    <div class="col-sm-10">
-                                                                        <input type="password"  value="<?php echo $password; ?>" name="password" class="form-control">
-                                                                    </div>
-                                                                </div>
-                                                         
-                                                                       <button type="submit" class="btn btn-primary" name="update" id="primary-popover-content">Update User</button>
-                                                                
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password"  value="<?php echo $password; ?>" name="password" class="form-control">
+                                        </div>
+                                    </div>
 
-                                                                     
+                                       <button type="submit" class="btn btn-primary" name="update" id="primary-popover-content">Update User</button>
+                                                                
+                                       </form>                     
       
 <?php include "includes/footer.php" ?>

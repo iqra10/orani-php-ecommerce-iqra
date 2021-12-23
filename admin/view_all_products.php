@@ -4,18 +4,6 @@
 <!-- nav -->
  <?php include 'includes/nav.php' ?>
 
-     <div class="pcoded-content">
-                                              
-                                              
-         <p style="background-color: white; color: #0A77F4; margin: 10px; line-height: 4em; font-size: 20px; padding-left: 10px;"> <?php echo $_SESSION['status']; ?></p>
-                                              
-                                              
-        </div>  
-
-
-
-
-
 
 <div class="pcoded-content">
                         <div class="pcoded-inner-content">
@@ -50,9 +38,6 @@
                                     <th>Status</th> 
                                     <th>View</th>                                                     <th>Edit</th>
                                     <th>Delete</th>
-
-
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,16 +46,14 @@
     $query = "SELECT * FROM products" ;
     $select_query = mysqli_query($connection,$query);  
     while($row = mysqli_fetch_assoc($select_query)) {
+        
         $id             = $row['id'];
         $title          = $row['title'];
         $price          = $row['price']; 
         $dep_id         = $row['dep_id'];
         $img            = $row['img'];
         $status         = $row['status'];
- 
-
-        
-        
+  
     printf('   <tr>
                 <td>%s</td>
                 <td>%s</td>
@@ -119,21 +102,11 @@ if(isset($_GET['delete'])) {
  $p_id = $_GET['delete'];
     
 $delete_product = delete_product_by_id($p_id);
-    
-               
- $_SESSION['status'] = "Deleted successfully";  
-     
+         
  header('Location: view_all_products.php');
 
      
- } else {
-      
-      $_SESSION['status'] = "";  
- 
-      
-  }
-        
-
+ }
                         
                         
 ?>

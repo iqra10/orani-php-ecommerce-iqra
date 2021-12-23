@@ -93,34 +93,42 @@ printf(' <h2>%s</h2>
     $price = $row['price'];    
     $description = $row['description'];    
 
- echo "<img class='product__details__pic__item--large'
-src='img/$img' alt=''>";
-echo "</div>";   
-echo "<div class='product__details__pic__slider owl-carousel'>";
-echo "<img data-imgbigurl='img/product/details/product-details-2.jpg'
-src='img/product/details/thumb-1.jpg' alt=''>";
-echo "<img data-imgbigurl='img/product/details/product-details-3.jpg'
-src='img/product/details/thumb-2.jpg' alt=''>";
-echo "<img data-imgbigurl='img/product/details/product-details-5.jpg'
-src='img/product/details/thumb-3.jpg' alt=''>";
-echo "<img data-imgbigurl='img/product/details/product-details-4.jpg'
-src='img/product/details/thumb-4.jpg' alt=''>";
-echo "</div>";
-echo "</div>";
-echo "</div>";
-echo "<div class='col-lg-6 col-md-6'>";
-echo "<div class='product__details__text'>";
-echo "<h3>$title</h3>";  
-echo "<div class='product__details__rating'>";
-echo "<i class='fa fa-star'></i>";
-echo "<i class='fa fa-star'></i>";
-echo "<i class='fa fa-star'></i>";
-echo "<i class='fa fa-star'></i>";
-echo "<i class='fa fa-star-half-o'></i>";
-echo "<span>(18 reviews)</span>";      
-echo "</div>";
-echo "<div class='product__details__price'>$price</div>";      
-echo "<p>$description</p>";       
+printf( '<img class="product__details__pic__item--large"
+src="img/%s" alt="" />
+</div>   
+<div class="product__details__pic__slider owl-carousel">
+<img data-imgbigurl="img/product/details/product-details-2.jpg"
+src="img/product/details/thumb-1.jpg" alt="">
+<img data-imgbigurl="img/product/details/product-details-3.jpg"
+src="img/product/details/thumb-2.jpg" alt="">
+<img data-imgbigurl="img/product/details/product-details-5.jpg"
+src="img/product/details/thumb-3.jpg" alt="">
+<img data-imgbigurl="img/product/details/product-details-4.jpg"
+src="img/product/details/thumb-4.jpg" alt="">
+</div>
+</div>
+</div>
+<div class="col-lg-6 col-md-6">
+<div class="product__details__text">
+<h3>%s</h3>  
+<div class="product__details__rating">
+<i class="fa fa-star"></i>
+<i class="fa fa-star"></i>
+<i class="fa fa-star"></i>
+<i class="fa fa-star"></i>
+<i class="fa fa-star-half-o"></i>
+<span>(18 reviews)</span> 
+</div>
+<div class="product__details__price">%s</div>      
+<p>%s</p>' ,
+       
+     $img,
+     $title,
+     $price,
+     $description
+     
+     
+       );
       
   }
     

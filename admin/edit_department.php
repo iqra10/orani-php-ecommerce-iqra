@@ -14,25 +14,23 @@
 
                                                 <div class="card-block">
                                                     <h4>Edit Department</h4>
-                  <?php
+   <?php
     
 if (isset($_GET['id'])) {
     
     
    $the_id = $_GET['id'];
     
-
-    
+  
 $query = "SELECT * FROM departments WHERE id = '{$the_id}'" ;    
     $result = mysqli_query($connection, $query);
     
     
     while ( $row = mysqli_fetch_array($result) ) {
+        
         $title = $row['title'];
-        $img = $row['img'];
         
-        
-        
+        $img   = $row['img'];
     }
     
        
@@ -59,6 +57,7 @@ if (isset($_POST['update'])) {
        if(empty($img)) {
     
  $query = "SELECT img FROM departments WHERE id = $the_id ";
+           
         $select_image = mysqli_query($connection,$query);
             
         while($row = mysqli_fetch_array($select_image)) {
@@ -68,8 +67,7 @@ if (isset($_POST['update'])) {
         }   
     
 } 
-    
-   
+
           $query = "UPDATE departments SET ";
           $query .="title  = '{$title}', ";
           $query .="img = '{$img}' ";  
@@ -88,26 +86,23 @@ $add_query = mysqli_query($connection, $query);
                                                     
         ?>
                                                     
-                                                    <form method="post" enctype="multipart/form-data">
-                                                        <div class="form-group row">
-                                                            
-                                                            <label class="col-sm-2 col-form-label">Department Name</label>
-                                                            <div class="col-sm-10">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group row">
+
+                            <label class="col-sm-2 col-form-label">Department Name</label>
+                            <div class="col-sm-10">
                 
                         <input type="text" name="title" value="<?php echo $title; ?>" class="form-control">
                         </div>
-                    </div>
+                        </div>
                           <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Upload File</label>
-                                            <div class="col-sm-10">
-                                       <img width="100" src="../img/categories/<?php echo $img; ?>" />
-
-                                    <input type="file" name="img" class="form-control">
-                                            </div>     
-                                            </div>
-
-                                   <button type="submit" class="btn btn-primary" name="update" id="primary-popover-">Update</button>
-                                                                
-                                                                   
+                            <label class="col-sm-2 col-form-label">Upload File</label>
+                                <div class="col-sm-10">
+                                   <img width="100" src="../img/categories/<?php echo $img; ?>" />
+                                     <input type="file" name="img" class="form-control">
+                                        </div>     
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" name="update" id="primary-popover-">Update</button>
+                                         </form>                 
       
 <?php include "includes/footer.php" ?>

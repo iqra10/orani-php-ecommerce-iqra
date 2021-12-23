@@ -89,14 +89,17 @@
                 </div>
             </div>
             
-<?php    
-if(isset($_POST['submit'])) {
+<?php 
     
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+if( isset( $_POST['submit'] ) ) {
+    
+    $name    = $_POST['name'];
+    
+    $email   = $_POST['email'];
+    
     $message = $_POST['message'];
     
-if(!empty($name) && !empty($email) && !empty($message)) {
+if( !empty( $name ) && !empty( $email ) && !empty( $message ) ) {
     
 $query = "INSERT INTO contact(name, email, message) ";
     

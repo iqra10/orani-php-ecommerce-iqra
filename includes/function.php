@@ -128,9 +128,7 @@ function get_latest_products_by_status() {
   global $connection;
 
 	$query = "SELECT * FROM products WHERE status = 'Publish' LIMIT 6";
-    
-//    $query .= "ORDER BY id DESC ";
-    
+        
     $result = mysqli_query( $connection, $query );
     
     $latest_products = [];  
@@ -208,5 +206,50 @@ function get_product_by_id($id) {
     
 }    
 
+function get_rated_products_by_status() {
+    
+    global $connection;
+    
+    $query = "SELECT * FROM products WHERE rate = '1' AND status = 'Publish' LIMIT 6" ;
+    
+    $result = mysqli_query( $connection, $query );
+    
+    $rated_products = [];  
+    
+	while($product = mysqli_fetch_array($result)){
+        
+		$rated_products[] = $product;
+	}
+    
+	return $rated_products;
 
+}
+  
+    
+function get_reviewed_products_by_status() {
+    
+    global $connection;
+    
+    $query = "SELECT * FROM products WHERE review = '1' AND status = 'Publish' LIMIT 6" ;
+    
+    $result = mysqli_query( $connection, $query );
+    
+    $reviewed_products = [];  
+    
+	while($product = mysqli_fetch_array($result)){
+        
+		$reviewed_products[] = $product;
+	}
+    
+	return $reviewed_products;
+
+}
+ 
+    
+    
+    
+    
+    
+    
+    
     

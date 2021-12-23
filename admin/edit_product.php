@@ -20,12 +20,22 @@
 	if ( isset( $_GET['edit'] ) ) {
 
 		$id = $_GET['edit'];
+        
 
 	} else {
 
 		$id = '';
 
 	}
+
+    if ( isset( $_GET['dep_id'] ) ) {
+
+        $dep_id = $_GET['dep_id'];
+
+    } else {
+
+        $dep_id = '';
+    }
 
 
 	if ( isset( $_POST['update'] ) ) {
@@ -43,6 +53,7 @@
 		$status      = $_POST['status'];
 		$rate        = $_POST['rate'] ?? 0;
 		$review      = $_POST['review'] ?? 0;
+
 
 		move_uploaded_file( $img_temp, "./../img/$img" );
 
@@ -138,16 +149,6 @@
 
 					<?php
 
-					if ( isset( $_GET['dep_id'] ) ) {
-
-						$dep_id = $_GET['dep_id'];
-
-					} else {
-
-						$dep_id = '';
-					}
-
-
 					$query  = "SELECT * FROM departments";
 					$result = mysqli_query( $connection, $query );
 
@@ -220,7 +221,6 @@
 
 					?>
 
-
                     <option value="Publish" <?php if ( $status == 'Publish' ) {
 						echo 'selected';
 					} ?> >Publish
@@ -241,41 +241,7 @@
             <div class="col-md-12">
                 <div class="checkbox-fade fade-in-primary">
                     <label class="col-form-label">
-						<?php
-
-						if ( isset ( $_GET['edit'] ) ) {
-
-
-							$the_id = $_GET['edit'];
-
-						} else {
-
-							$the_id = '';
-
-						}
-
-
-						$products = get_product_by_id( $the_id );
-
-						//    var_dump($products);
-
-						foreach ( $products as $product ) {
-							$id          = $product['id'];
-							$title       = $product['title'];
-							$price       = $product['price'];
-							$dep_id      = $product['dep_id'];
-							$description = $product['description'];
-							$info        = $product['info'];
-							$img         = $product['img'];
-							$rate        = $product['rate'];
-							$review      = $product['review'];
-
-						}
-
-						?>
-
-
-                        <input type="checkbox" name="rate" value="<?php echo $rate ? 1 : 0  ?>" <?php echo $rate ? 'checked="checked"' : ''?>>
+                        <input type="checkbox" name="rate" value="<?php echo $rate; ?>" <?php echo $rate ? 'checked="checked"' : ''?> />
                         <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                         <span class="text-inverse">Rate Product</span>
                     </label>
@@ -290,7 +256,7 @@
                 <div class="checkbox-fade fade-in-primary">
                     <label class="col-form-label">
 
-                        <input type="checkbox" name="review" value="<?php echo $review;?>" <?php echo $review ? 'checked="checked"' : ''?>/>
+                        <input type="checkbox" name="review" value="<?php echo $review; ?>" <?php echo $review ? 'checked="checked"' : ''?> />
 
                         <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                         <span class="text-inverse">Review Product</span>

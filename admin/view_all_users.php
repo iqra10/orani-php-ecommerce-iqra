@@ -4,31 +4,13 @@
 <!-- nav -->
  <?php include 'includes/nav.php' ?>
 
-
-     <div class="pcoded-content">
-                                              
-                                              
-         <p style="background-color: white; color: #0A77F4; margin: 10px; line-height: 4em; font-size: 20px; padding-left: 10px;"> <?php echo $_SESSION['status']; ?></p>
-                                              
-                                              
-        </div>  
-
-
-
-
-
 <div class="pcoded-content">
                         <div class="pcoded-inner-content">
                                     <div class="page-body">
                                         <div class="row">
                                             <div class="col-sm-12">
-
-                                                     <div class="card">
-                                                
-                                                         
-                                                         
-                                                         
-                                        <div class="card-header">
+                                            <div class="card"> 
+                                             <div class="card-header">
                                             <div class="card-header-right">
 												<ul class="list-unstyled card-option">
 													<li><i class="fa fa-chevron-left"></i></li>
@@ -85,15 +67,15 @@
 ?>
 
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
                                                         
                                                             
-        <?php 
+<?php 
 
 if(isset($_GET['delete'])) {
   

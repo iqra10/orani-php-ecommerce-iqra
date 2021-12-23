@@ -31,10 +31,6 @@
                                                         <tr>
                                                             <th>Id</th>
                                                             <th>Username</th>
-<!--
-                                                            <th>Email</th>
-                                                            <th></th>
--->
                                                             <th>View</th>
                                                             <th>Delete</th>
                                                         </tr>
@@ -60,8 +56,6 @@
                 </tr> ',
        $id,
        $name,
-//       $email,
-//       $password,
        $id,
        $id
           
@@ -71,8 +65,6 @@
     }
 
 ?>
-
-
                                                     </tbody>
                                                 </table>
                                             </div>
